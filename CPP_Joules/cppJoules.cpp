@@ -29,6 +29,7 @@ void EnergyTracker::print_energy()
   for (int i = 0; i < total_core_energy.size(); i++)
   {
     std::cout << "Device " << i << std::endl;
+    std::cout << "Time " << std::chrono::duration_cast<std::chrono::seconds>(end_time - start_time).count() << " seconds" << std::endl;
     std::cout << "Package " << total_package_energy[i] << std::endl;
     std::cout << "Core " << total_core_energy[i] << std::endl;
     std::cout << "Uncore " << total_uncore_energy[i] << std::endl;
