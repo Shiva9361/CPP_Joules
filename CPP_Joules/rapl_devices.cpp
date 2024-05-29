@@ -1,4 +1,5 @@
 #include "rapl_devices.h"
+#include "rapl_exceptions.h"
 #include <fstream>
 #include <iostream>
 #include <filesystem>
@@ -44,9 +45,9 @@ std::vector<EnergyState> RAPLDevice::getEnergy()
       std::string path = id.second + "/energy_uj";
       std::ifstream Filehandler(path);
 
-      if (!Filehandler.good())
+      if (!Filehandler.is_open())
       {
-        std::cout << "RAPL access denied";
+        throw RAPLException("RAPL access denied");
       }
       std::string energy_s;
       getline(Filehandler, energy_s);
