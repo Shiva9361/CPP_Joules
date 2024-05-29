@@ -5,7 +5,9 @@ class EnergyType
 
 public:
   long long core_energy;
+  long long uncore_energy;
+  long long package_energy;
   EnergyType();
-  EnergyType(long long core_energy);
+  EnergyType(long long package_energy, long long core_energy, long long uncore_energy);
 };
 #endif

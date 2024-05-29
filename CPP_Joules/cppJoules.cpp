@@ -4,7 +4,7 @@
 void EnergyTracker::start()
 {
   start_time = std::chrono::system_clock::now();
-  inital_energy = RAPL_device.getEnergy();
+  initial_energy = RAPL_device.getEnergy();
 }
 
 void EnergyTracker::stop()
@@ -15,11 +15,23 @@ void EnergyTracker::stop()
 
 void EnergyTracker::calculate_energy()
 {
-  total_core_energy = final_energy.core_energy - inital_energy.core_energy;
+  for (int i = 0; i < RAPL_device.devices.size(); i++)
+  {
+    total_package_energy.push_back(final_energy[i].energy_values->package_energy - initial_energy[i].energy_values->package_energy);
+    total_core_energy.push_back(final_energy[i].energy_values->core_energy - initial_energy[i].energy_values->core_energy);
+    total_uncore_energy.push_back(final_energy[i].energy_values->uncore_energy - initial_energy[i].energy_values->uncore_energy);
+  }
 }
 void EnergyTracker::print_energy()
 {
   std::cout << std::endl;
-  std::cout << "Core " << total_core_energy << std::endl;
   std::cout << std::endl;
+  for (int i = 0; i < total_core_energy.size(); i++)
+  {
+    std::cout << "Device " << i << std::endl;
+    std::cout << "Package " << total_package_energy[i] << std::endl;
+    std::cout << "Core " << total_core_energy[i] << std::endl;
+    std::cout << "Uncore " << total_uncore_energy[i] << std::endl;
+    std::cout << std::endl;
+  }
 }
