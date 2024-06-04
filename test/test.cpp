@@ -14,5 +14,8 @@ int main(int argc, char const *argv[])
 int add(int a, int b)
 {
   std::this_thread::sleep_for(std::chrono::seconds(2));
-  return a + b;
+  int c = 0;
+  for (int i = 0; i < 1000000; i++)
+    c += (a + b);
+  return c;
 }
