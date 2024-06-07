@@ -4,6 +4,7 @@
 #include <iostream>
 #include <filesystem>
 #include <chrono>
+#include <memory>
 #include <unordered_map>
 RAPLDevice::RAPLDevice()
 {
@@ -59,9 +60,9 @@ std::vector<EnergyState> RAPLDevice::getEnergy()
       else
         uncore_energy = energy;
     }
-    EnergyType *energy_values = new EnergyType(package_energy, core_energy, uncore_energy);
+    std::unique_ptr<EnergyType> energy_values = std::make_unique<EnergyType>(package_energy, core_energy, uncore_energy);
     std::chrono::time_point<std::chrono::system_clock> timestamp = std::chrono::system_clock::now();
-    EnergyState energy(timestamp, energy_values);
+    EnergyState energy(timestamp, energy_values.get());
     energies.push_back(energy);
   }
   return energies;
