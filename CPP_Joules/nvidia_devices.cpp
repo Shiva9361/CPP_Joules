@@ -20,7 +20,6 @@ NVMLDevice::NVMLDevice()
     devices[i] = std::make_unique<nvmlDevice_t>();
     check(nvmlDeviceGetHandleByIndex_v2(i, devices[i].get()));
   }
-  getEnergy();
 }
 
 std::map<std::string, unsigned long long> NVMLDevice::getEnergy()
