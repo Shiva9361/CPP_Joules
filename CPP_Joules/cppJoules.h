@@ -5,11 +5,13 @@
 #include <chrono>
 #include "rapl_devices.h"
 #include "energy_state.h"
+#include "nvidia_devices.h"
 
 class EnergyTracker
 {
   std::chrono::time_point<std::chrono::system_clock> start_time, end_time;
   RAPLDevice RAPL_device;
+  NVMLDevice NVML_device;
   std::vector<EnergyState> initial_energy, final_energy;
   std::vector<long long> total_core_energy;
   std::vector<long long> total_uncore_energy;
