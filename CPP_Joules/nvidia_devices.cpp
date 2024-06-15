@@ -1,12 +1,15 @@
 #include "nvidia_devices.h"
+#include "rapl_exceptions.h"
 #include <string>
 #include <iostream>
 
-#define check(status_code)                                    \
-  if (static_cast<nvmlReturn_t>(status_code) != NVML_SUCCESS) \
-  {                                                           \
-    std::cout << "Error occured in nvml" << status_code;      \
+#define check(status_code)                                                                      \
+  if (static_cast<nvmlReturn_t>(status_code) != NVML_SUCCESS)                                   \
+  {                                                                                             \
+    throw CPPJoulesException(("Error occured in nvml, code : " + std::to_string(status_code))); \
   }
+// NVML Requires pointers to be passed for all APIs
+// NVML API Returns status code for each query
 
 NVMLDevice::NVMLDevice()
 {

@@ -1,7 +1,7 @@
 #include "energy_state.h"
-
-EnergyState::EnergyState(std::chrono::time_point<std::chrono::system_clock> timestamp, EnergyType *energy)
+#include <string>
+EnergyState::EnergyState(std::chrono::time_point<std::chrono::system_clock> timestamp, std::map<std::string, unsigned long long> energies)
 {
-  this->energy_values = energy;
+  this->energies = energies;
   this->timestamp = timestamp;
 }

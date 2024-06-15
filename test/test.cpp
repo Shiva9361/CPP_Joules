@@ -7,8 +7,16 @@ int main(int argc, char const *argv[])
 {
   /* code */
   auto new_func = measure_energy(add);
-  std::cout << new_func(1, 2) << std::endl;
-  return 0;
+  // std::cout << new_func(1, 2) << std::endl;
+  EnergyTracker energy_tracker;
+  energy_tracker.start();
+  std::this_thread::sleep_for(std::chrono::seconds(2));
+  energy_tracker.stop();
+  energy_tracker.start();
+  std::this_thread::sleep_for(std::chrono::seconds(2));
+  energy_tracker.stop();
+  energy_tracker.calculate_energy();
+  energy_tracker.print_energy();
 }
 
 int add(int a, int b)

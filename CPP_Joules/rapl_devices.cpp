@@ -32,14 +32,12 @@ RAPLDevice::RAPLDevice()
   }
 }
 
-std::vector<EnergyState> RAPLDevice::getEnergy()
+std::map<std::string, unsigned long long> RAPLDevice::getEnergy()
 {
-  std::vector<EnergyState> energies;
+  std::map<std::string, unsigned long long> energies;
+  int device_id = 0;
   for (auto device : devices)
   {
-    long long package_energy = 0;
-    long long core_energy = 0;
-    long long uncore_energy = 0;
 
     for (auto id : device)
     {
@@ -48,22 +46,19 @@ std::vector<EnergyState> RAPLDevice::getEnergy()
 
       if (!Filehandler.is_open())
       {
-        throw RAPLException("RAPL access denied");
+        throw CPPJoulesException("RAPL access denied");
       }
       std::string energy_s;
       getline(Filehandler, energy_s);
       long long energy = std::stoll(energy_s);
       if (id.first == -1)
-        package_energy = energy;
+        energies["package_" + std::to_string(device_id)] = energy;
       else if (id.first == 0)
-        core_energy = energy;
+        energies["core_" + std::to_string(device_id)] = energy;
       else
-        uncore_energy = energy;
+        energies["uncore_" + std::to_string(device_id)] = energy;
     }
-    std::unique_ptr<EnergyType> energy_values = std::make_unique<EnergyType>(package_energy, core_energy, uncore_energy);
-    std::chrono::time_point<std::chrono::system_clock> timestamp = std::chrono::system_clock::now();
-    EnergyState energy(timestamp, energy_values.get());
-    energies.push_back(energy);
+    device_id++;
   }
   return energies;
 }
