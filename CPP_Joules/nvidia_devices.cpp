@@ -13,15 +13,22 @@
 
 NVMLDevice::NVMLDevice()
 {
-  check(nvmlInit_v2());
-  device_count = std::make_unique<uint32_t>();
-  check(nvmlDeviceGetCount_v2(device_count.get()));
-
-  devices.resize(*device_count.get());
-  for (uint32_t i = 0; i < *device_count.get(); i++)
+  try
   {
-    devices[i] = std::make_unique<nvmlDevice_t>();
-    check(nvmlDeviceGetHandleByIndex_v2(i, devices[i].get()));
+    check(nvmlInit_v2());
+    device_count = std::make_unique<uint32_t>();
+    check(nvmlDeviceGetCount_v2(device_count.get()));
+
+    devices.resize(*device_count.get());
+    for (uint32_t i = 0; i < *device_count.get(); i++)
+    {
+      devices[i] = std::make_unique<nvmlDevice_t>();
+      check(nvmlDeviceGetHandleByIndex_v2(i, devices[i].get()));
+    }
+  }
+  catch (CPPJoulesException e)
+  {
+    std::cout << "Nvidia gpu not activated";
   }
 }
 

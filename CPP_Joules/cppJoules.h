@@ -1,6 +1,5 @@
 #ifndef CPP_JOULES
 #define CPP_JOULES
-#include <functional>
 #include <iostream>
 #include <chrono>
 #include <map>
@@ -30,20 +29,6 @@ public:
   void stop();
   void calculate_energy();
   void print_energy();
+  void save_csv(std::string file);
 };
-
-template <typename Func>
-auto measure_energy(Func func)
-{
-  return [func](auto &&...args)
-  {
-    EnergyTracker energy_tracker;
-    energy_tracker.start();
-    auto value = func(std::forward<decltype(args)>(args)...);
-    energy_tracker.stop();
-    energy_tracker.calculate_energy();
-    energy_tracker.print_energy();
-    return value;
-  };
-}
 #endif

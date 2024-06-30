@@ -1,6 +1,8 @@
 #include "cppJoules.h"
 #include "rapl_exceptions.h"
 #include <iostream>
+#include <fstream>
+#include <filesystem>
 
 void EnergyTracker::start()
 {
@@ -83,4 +85,15 @@ void EnergyTracker::print_energy()
   {
     std::cout << energy.first << " " << energy.second << "\n";
   }
+}
+
+void EnergyTracker::save_csv(std::string file)
+{
+  std::ofstream csv_file(file);
+  for (auto energy : last_calculated_energies)
+  {
+    csv_file << energy.second << ",";
+  }
+  csv_file << "\n";
+  csv_file.close();
 }

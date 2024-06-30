@@ -15,7 +15,7 @@ RAPLDevice::RAPLDevice()
     socket_id++;
     path = RAPL_API_PATH + "intel-rapl:" + std::to_string(socket_id);
   }
-  for (int i = 0; i < socket_id; i++)
+  for (uint32_t i = 0; i < socket_id; i++)
   {
     std::string temp = "intel-rapl:" + std::to_string(i);
     int inner_id = 0;
