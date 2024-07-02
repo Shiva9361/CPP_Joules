@@ -3,16 +3,16 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include "energy_state.h"
+#include <map>
 
 class RAPLDevice
 {
   std::string RAPL_API_PATH = "/sys/class/powercap/intel-rapl/";
-  std::unordered_map<int, std::string> details = {{0, "core"}, {1, "uncore"}};
+  std::string getName(std::string path);
 
 public:
-  std::vector<std::unordered_map<int, std::string>> devices;
-  std::vector<EnergyState> getEnergy();
+  std::vector<std::unordered_map<std::string, std::string>> devices;
+  std::map<std::string, unsigned long long> getEnergy();
   RAPLDevice();
 };
 #endif
