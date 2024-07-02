@@ -55,12 +55,10 @@ void EnergyTracker::calculate_energy()
     throw CPPJoulesException("Tracker never started");
   if (state != STOPPED)
     throw CPPJoulesException("Stop tracker before calculating Energy");
-  if (!energy_readings.size() % 2)
-    throw CPPJoulesException("Not enough measurements to calculate");
 
   last_calculated_energies.clear();
   last_calculated_time = 0;
-  for (uint32_t i = 0; i < energy_readings.size(); i += 2)
+  for (uint32_t i = 0; i < energy_readings.size() - 1; i++)
   {
     auto start = energy_readings[i];
     auto stop = energy_readings[i + 1];
