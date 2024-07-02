@@ -16,3 +16,5 @@
 ```
 
 CPPJoules library will be installed in your system
+
+- To use with g++, nvcc use -l:libCPP_Joules.a flag along with -lnvidia-ml flag(for nvml)
