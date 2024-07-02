@@ -1,6 +1,6 @@
 #ifndef NVIDIA_DEVICES
 #define NVIDIA_DEVICES
-#include "nvml/nvml.h"
+#include "nvml.h"
 #include <vector>
 #include <map>
 #include <memory>

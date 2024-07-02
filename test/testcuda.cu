@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <cuda_runtime.h>
-#include "../CPP_Joules/cppJoules.h"
+#include <CPP_Joules/cppJoules.h>
 
 // CUDA kernel for matrix multiplication
 __global__ void matMulKernel(float* A, float* B, float* C, int N) {

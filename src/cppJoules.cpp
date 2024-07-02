@@ -1,5 +1,5 @@
-#include "cppJoules.h"
-#include "rapl_exceptions.h"
+#include <cppJoules_exceptions.h>
+#include <cppJoules.h>
 #include <iostream>
 #include <fstream>
 #include <filesystem>
