@@ -8,13 +8,18 @@
 
 ## Instructions
 
-```bash=
+```bash!=
   mkdir build
   cd build
   cmake ..
   sudo cmake --build . --target install
 ```
 
-CPPJoules library will be installed in your system
+### CPPJoules library will be installed in your system
 
 - To use with g++, nvcc use -l:libCPP_Joules.a flag along with -lnvidia-ml flag(for nvml)
+
+### To use
+```cpp!=
+  #include<CPP_Joules/cppJoules.h>
+```
