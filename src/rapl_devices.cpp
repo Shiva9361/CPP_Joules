@@ -30,17 +30,18 @@ RAPLDevice::RAPLDevice()
     int inner_id = 0;
     path = RAPL_API_PATH + temp + "/" + temp + ":" + std::to_string(inner_id);
 
-    std::unordered_map<std::string, std::string> device;
+    std::unordered_map<std::string, std::string> device, max_energy_device;
 
-    device[getName(RAPL_API_PATH + temp)] = RAPL_API_PATH + temp + "/energy_uj";
+    devices[getName(RAPL_API_PATH + temp)] = RAPL_API_PATH + temp + "/energy_uj";
+    max_energy_devices[getName(RAPL_API_PATH + temp)] = RAPL_API_PATH + temp + "/max_energy_range_uj";
 
     while (std::filesystem::exists(path))
     {
       device[getName(path) + "-" + std::to_string(i)] = path + "/energy_uj";
+      max_energy_device[getName(path) + "-" + std::to_string(i)] = path + "/max_energy_range_uj";
       inner_id++;
       path = RAPL_API_PATH + temp + "/" + temp + ":" + std::to_string(inner_id);
     }
-    devices.push_back(device);
   }
 }
 
@@ -63,26 +64,21 @@ std::map<std::string, unsigned long long> RAPLDevice::getEnergy()
    * Function to get the energy counter values from Powercap
    */
   std::map<std::string, unsigned long long> energies;
-  int device_id = 0;
+
   for (auto device : devices)
   {
+    std::string path = device.second;
+    std::ifstream Filehandler(path);
 
-    for (auto id : device)
+    if (!Filehandler.is_open())
     {
-      std::string path = id.second;
-      std::ifstream Filehandler(path);
-
-      if (!Filehandler.is_open())
-      {
-        throw CPPJoulesException("RAPL access denied");
-      }
-
-      std::string energy_s;
-      getline(Filehandler, energy_s);
-      long long energy = std::stoll(energy_s);
-      energies[id.first] = energy;
+      throw CPPJoulesException("RAPL access denied");
     }
-    device_id++;
+
+    std::string energy_s;
+    getline(Filehandler, energy_s);
+    long long energy = std::stoll(energy_s);
+    energies[device.first] = energy;
   }
   return energies;
 }
