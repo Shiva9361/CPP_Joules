@@ -69,7 +69,25 @@ void EnergyTracker::calculate_energy()
     last_calculated_time += delta_time;
     for (auto domain : start.energies)
     {
-      last_calculated_energies[domain.first] += (stop.energies[domain.first] - domain.second);
+      /**
+       * If the energy counter had reset, we have to add the max energy
+       */
+      if (stop.energies[domain.first] - domain.second < 0)
+      {
+        if (RAPL_device.max_energy_devices.count(domain.first))
+        {
+          std::ifstream Filehandler(RAPL_device.max_energy_devices[domain.first]);
+          std::string energy_s;
+          getline(Filehandler, energy_s);
+          long long energy = std::stoll(energy_s);
+
+          last_calculated_energies[domain.first] += stop.energies[domain.first] - domain.second + energy;
+        }
+      }
+      else
+      {
+        last_calculated_energies[domain.first] += (stop.energies[domain.first] - domain.second);
+      }
     }
   }
   energy_readings.clear();
