@@ -37,7 +37,7 @@ RAPLDevice::RAPLDevice()
 
     while (std::filesystem::exists(path))
     {
-      device[getName(path) + "-" + std::to_string(i)] = path + "/energy_uj";
+      devices[getName(path) + "-" + std::to_string(i)] = path + "/energy_uj";
       max_energy_device[getName(path) + "-" + std::to_string(i)] = path + "/max_energy_range_uj";
       inner_id++;
       path = RAPL_API_PATH + temp + "/" + temp + ":" + std::to_string(inner_id);

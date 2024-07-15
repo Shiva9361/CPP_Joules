@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.2)
 project(CPP_Joules VERSION 0.0.1 DESCRIPTION "Energy Measurement toolkit for cpp/cuda" LANGUAGES CXX)
 
-add_library(CPP_Joules STATIC)
+add_library(CPP_Joules SHARED)
 
 target_sources(CPP_Joules
     PRIVATE  
+    ${PROJECT_SOURCE_DIR}/src/LangJoulesWrapper.cpp
     ${PROJECT_SOURCE_DIR}/src/cppJoules.cpp 
     ${PROJECT_SOURCE_DIR}/src/energy_state.cpp 
     ${PROJECT_SOURCE_DIR}/src/nvidia_devices.cpp 
@@ -42,6 +43,7 @@ else()
 endif()
 
 set(public_headers
+  include/LangJoulesWrapper.h
   include/cppJoules.h
   include/energy_state.h
   include/nvidia_devices.h
