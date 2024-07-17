@@ -24,7 +24,7 @@ NVMLDevice::NVMLDevice()
   const char *path = (std::string(tpath) + std::string("\\nvml.dll")).c_str();
 #endif
 #ifdef __linux__
-  std::string path = PATH;
+  const char *path = PATH;
 #endif
   nvmlhandle = OPENLIB(path);
   usable = true;

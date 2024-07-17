@@ -25,19 +25,7 @@
 #include <vector>
 #include <map>
 #include <memory>
-/**
- * Custom deleter is needed
- */
-struct Dlcloser
-{
-  void operator()(void *handle) const
-  {
-    if (handle)
-    {
-      CLOSELIB(handle);
-    }
-  }
-};
+
 class EXPOSE_DLL NVMLDevice
 {
 private:
