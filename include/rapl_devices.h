@@ -5,7 +5,12 @@
 #include <vector>
 #include <map>
 
-class RAPLDevice
+#ifdef _WIN32
+#define EXPOSE_DLL __declspec(dllexport)
+#else
+#define EXPOSE_DLL
+#endif
+class EXPOSE_DLL RAPLDevice
 {
   std::string RAPL_API_PATH = "/sys/class/powercap/intel-rapl/";
   std::string getName(std::string path);

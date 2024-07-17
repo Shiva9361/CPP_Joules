@@ -15,6 +15,8 @@ RAPLDevice::RAPLDevice()
    * Requires read access to all energy_uj files of accessible
    * domains
    *  */
+  std::cout << "Init" << std::endl;
+#ifdef __linux__
   int socket_id = 0;
   std::string path = RAPL_API_PATH + "intel-rapl:" + std::to_string(socket_id);
 
@@ -43,6 +45,7 @@ RAPLDevice::RAPLDevice()
       path = RAPL_API_PATH + temp + "/" + temp + ":" + std::to_string(inner_id);
     }
   }
+#endif
 }
 
 std::string RAPLDevice::getName(std::string path)
@@ -72,7 +75,7 @@ std::map<std::string, unsigned long long> RAPLDevice::getEnergy()
 
     if (!Filehandler.is_open())
     {
-      throw CPPJoulesException("RAPL access denied");
+      return energies;
     }
 
     std::string energy_s;

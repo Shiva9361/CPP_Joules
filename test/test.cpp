@@ -1,7 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <chrono>
-#include <CPP_Joules/cppJoules.h>
+#include "../include/cppJoules.h"
 
 int main()
 {
@@ -13,5 +13,6 @@ int main()
   tracker.stop();
   tracker.calculate_energy();
   tracker.print_energy();
+
   return 0;
 }

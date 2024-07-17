@@ -7,6 +7,12 @@
 #include "energy_state.h"
 #include "nvidia_devices.h"
 
+#ifdef _WIN32
+#define EXPOSE_DLL __declspec(dllexport)
+#else
+#define EXPOSE_DLL
+#endif
+
 enum TrackerState
 {
   UNINITIALIZED,
@@ -14,7 +20,7 @@ enum TrackerState
   STOPPED
 };
 
-class EnergyTracker
+class EXPOSE_DLL EnergyTracker
 {
   // std::chrono::time_point<std::chrono::system_clock> start_time, end_time;
   RAPLDevice RAPL_device;
