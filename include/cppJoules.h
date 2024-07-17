@@ -28,7 +28,7 @@ public:
   void start();
   void stop();
   void calculate_energy();
-  void print_energy();
-  void save_csv(std::string file);
+  void print_energy(std::string tag = "notag");
+  void save_csv(std::string file, std::string tag = "notag");
 };
 #endif

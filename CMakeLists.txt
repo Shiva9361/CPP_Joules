@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.2)
 project(CPP_Joules VERSION 0.0.1 DESCRIPTION "Energy Measurement toolkit for cpp/cuda" LANGUAGES CXX)
 
-add_library(CPP_Joules STATIC)
+add_library(CPP_Joules SHARED)
 
 target_sources(CPP_Joules
     PRIVATE  

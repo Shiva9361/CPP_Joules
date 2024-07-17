@@ -91,12 +91,13 @@ void EnergyTracker::calculate_energy()
   }
   energy_readings.clear();
 }
-void EnergyTracker::print_energy()
+void EnergyTracker::print_energy(std::string tag)
 {
   if (last_calculated_energies.empty())
   {
     throw("No Value to print");
   }
+  std::cout << "Tag " << tag << "\n";
   std::cout << "Time " << last_calculated_time << "\n";
   for (auto energy : last_calculated_energies)
   {
@@ -104,9 +105,17 @@ void EnergyTracker::print_energy()
   }
 }
 
-void EnergyTracker::save_csv(std::string file)
+void EnergyTracker::save_csv(std::string file, std::string tag)
 {
-  std::ofstream csv_file(file);
+  std::ofstream csv_file(file, std::ios_base::app);
+
+  csv_file << "tag" << ",";
+  for (auto energy : last_calculated_energies)
+  {
+    csv_file << energy.first << ",";
+  }
+  csv_file << "\n";
+  csv_file << tag << ",";
   for (auto energy : last_calculated_energies)
   {
     csv_file << energy.second << ",";
