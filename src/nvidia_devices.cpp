@@ -56,7 +56,6 @@ std::map<std::string, unsigned long long> NVMLDevice::getEnergy()
 {
   nvmlfunction_nvmlDevice_unsignedlonglong _nvmlDeviceGetTotalEnergyConsumption = reinterpret_cast<nvmlfunction_nvmlDevice_unsignedlonglong>(GETFUNC(nvmlhandle, "nvmlDeviceGetTotalEnergyConsumption"));
   std::map<std::string, unsigned long long> energies;
-  std::cout << *device_count.get() << std::endl;
   for (uint32_t i = 0; i < *device_count.get(); i++)
   {
     std::unique_ptr<unsigned long long> energy_value = std::make_unique<unsigned long long>();

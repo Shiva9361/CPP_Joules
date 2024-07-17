@@ -20,12 +20,7 @@ void EnergyTracker::start()
   if (NVML_device.usable)
   {
     nvidia_energy = NVML_device.getEnergy();
-    std::cout << "Got" << std::endl;
     start_energy.insert(nvidia_energy.begin(), nvidia_energy.end());
-  }
-  for (auto i : start_energy)
-  {
-    std::cout << i.first << " " << i.second << std::endl;
   }
 
   EnergyState energy = EnergyState(start_time, start_energy);
@@ -36,9 +31,15 @@ void EnergyTracker::start()
 void EnergyTracker::stop()
 {
   if (state == UNINITIALIZED)
-    throw CPPJoulesException("Tracker never started");
+  {
+    std::cout << "Tracker never started" << std::endl;
+    return;
+  }
   if (state == STOPPED)
-    throw CPPJoulesException("Tracker already stopped");
+  {
+    std::cout << "Tracker already stopped" << std::endl;
+    return;
+  }
   auto end_time = std::chrono::system_clock::now();
   auto stop_energy = RAPL_device.getEnergy();
   std::map<std::string, unsigned long long> nvidia_energy;
@@ -58,11 +59,13 @@ void EnergyTracker::calculate_energy()
 {
   if (state == UNINITIALIZED)
   {
-    throw CPPJoulesException("Tracker never started");
+    std::cout << "Tracker never started" << std::endl;
+    return;
   }
   if (state != STOPPED)
   {
-    throw CPPJoulesException("Stop tracker before calculating Energy");
+    std::cout << "Stop tracker before calculating Energy" << std::endl;
+    return;
   }
   last_calculated_energies.clear();
   last_calculated_time = 0;
@@ -73,7 +76,10 @@ void EnergyTracker::calculate_energy()
     int64_t delta_time = std::chrono::duration_cast<std::chrono::seconds>(stop.timestamp - start.timestamp).count();
 
     if (start.energies.size() != stop.energies.size())
-      throw CPPJoulesException("Readings are off");
+    {
+      std::cout << "Readings are off" << std::endl;
+      return;
+    }
     last_calculated_time += delta_time;
     for (auto domain : start.energies)
     {

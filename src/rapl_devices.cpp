@@ -15,7 +15,6 @@ RAPLDevice::RAPLDevice()
    * Requires read access to all energy_uj files of accessible
    * domains
    *  */
-  std::cout << "Init" << std::endl;
 #ifdef __linux__
   int socket_id = 0;
   std::string path = RAPL_API_PATH + "intel-rapl:" + std::to_string(socket_id);
