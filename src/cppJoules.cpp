@@ -6,6 +6,7 @@
 
 void EnergyTracker::start()
 {
+
   if (state == STARTED)
   {
     std::cout << "Tracker already started" << std::endl;
@@ -22,7 +23,6 @@ void EnergyTracker::start()
     nvidia_energy = NVML_device.getEnergy();
     start_energy.insert(nvidia_energy.begin(), nvidia_energy.end());
   }
-
   EnergyState energy = EnergyState(start_time, start_energy);
   energy_readings.push_back(energy);
   state = STARTED;
@@ -49,7 +49,6 @@ void EnergyTracker::stop()
     nvidia_energy = NVML_device.getEnergy();
     stop_energy.insert(nvidia_energy.begin(), nvidia_energy.end());
   }
-
   EnergyState energy = EnergyState(end_time, stop_energy);
   energy_readings.push_back(energy);
   state = STOPPED;
@@ -88,6 +87,7 @@ void EnergyTracker::calculate_energy()
        */
       if (stop.energies[domain.first] - domain.second < 0)
       {
+#ifdef __linux__
         if (RAPL_device.max_energy_devices.count(domain.first))
         {
           std::ifstream Filehandler(RAPL_device.max_energy_devices[domain.first]);
@@ -97,6 +97,7 @@ void EnergyTracker::calculate_energy()
 
           last_calculated_energies[domain.first] += stop.energies[domain.first] - domain.second + energy;
         }
+#endif
       }
       else
       {
