@@ -101,6 +101,7 @@ RAPLDevice::RAPLDevice()
         _GetMsrName(j, name.get());
         std::wstring namewstr = std::wstring(name.get());
         std::string namestr = std::string(namewstr.begin(), namewstr.end());
+        namestr = namestr + "-" + std::to_string(i);
         devices[namestr] = {i, j};
       }
     }
