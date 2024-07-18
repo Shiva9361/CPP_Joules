@@ -10,8 +10,8 @@ int main()
   EnergyTracker tracker;
   tracker.start();
   std::this_thread::sleep_for(std::chrono::seconds(6));
-  // tracker.stop();
-  // tracker.start();
+  tracker.stop();
+  tracker.start();
   std::this_thread::sleep_for(std::chrono::seconds(3));
   tracker.stop();
   tracker.calculate_energy();

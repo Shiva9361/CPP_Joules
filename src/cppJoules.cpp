@@ -85,7 +85,8 @@ void EnergyTracker::calculate_energy()
       /**
        * If the energy counter had reset, we have to add the max energy
        */
-      if (stop.energies[domain.first] - domain.second < 0)
+      // std::cout << (long long)stop.energies[domain.first] - (long long)domain.second << std::endl;
+      if ((long long)stop.energies[domain.first] - (long long)domain.second < 0)
       {
 #ifdef __linux__
         if (RAPL_device.max_energy_devices.count(domain.first))
