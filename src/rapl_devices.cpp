@@ -97,7 +97,7 @@ RAPLDevice::RAPLDevice()
       _GetMsrFunc(j, &func);
       if (func == MSR_FUNC_POWER)
       {
-        std::unique_ptr<wchar_t> name = std::make_unique<wchar_t>();
+        std::unique_ptr<wchar_t[]> name = std::make_unique<wchar_t[]>(100);
         _GetMsrName(j, name.get());
         std::wstring namewstr = std::wstring(name.get());
         std::string namestr = std::string(namewstr.begin(), namewstr.end());
@@ -157,7 +157,7 @@ std::map<std::string, unsigned long long> RAPLDevice::getEnergy()
 
   for (auto device : devices)
   {
-    std::unique_ptr<double> data = std::make_unique<double>();
+    std::unique_ptr<double[]> data = std::make_unique<double[]>(10);
     int nData;
     if (initialized)
     {

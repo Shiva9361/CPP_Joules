@@ -24,6 +24,7 @@ NVMLDevice::NVMLDevice()
   // Directly building might not work, the string might be lost before applying .c_str
   std::string fullpath = std::string(tpath) + std::string("\\nvml.dll");
   const char *path = fullpath.c_str();
+
 #endif
 #ifdef __linux__
   const char *path = PATH;
