@@ -1,5 +1,4 @@
-#include <nvidia_devices.h>
-#include <cppJoules_exceptions.h>
+#include "../include/nvidia_devices.h"
 #include <string>
 
 #include <iostream>
@@ -19,7 +18,18 @@ typedef void (*nvmlfunction_nvmlDevice_unsignedlonglong)(nvmlDevice_t, unsigned 
 
 NVMLDevice::NVMLDevice()
 {
-  nvmlhandle.reset(dlopen("libnvidia-ml.so.1", RTLD_LAZY));
+#ifdef _WIN64
+  char tpath[MAX_PATH];
+  GetSystemDirectoryA(tpath, MAX_PATH);
+  // Directly building might not work, the string might be lost before applying .c_str
+  std::string fullpath = std::string(tpath) + std::string("\\nvml.dll");
+  const char *path = fullpath.c_str();
+
+#endif
+#ifdef __linux__
+  const char *path = PATH;
+#endif
+  nvmlhandle = OPENLIB(path);
   usable = true;
   if (!nvmlhandle)
   {
@@ -28,9 +38,9 @@ NVMLDevice::NVMLDevice()
     return;
   }
 
-  nvmlfunction_void _nvmlInit = reinterpret_cast<nvmlfunction_void>(dlsym(nvmlhandle.get(), "nvmlInit_v2"));
-  nvmlfunction_uint32 _nvmlDeviceGetCount = reinterpret_cast<nvmlfunction_uint32>(dlsym(nvmlhandle.get(), "nvmlDeviceGetCount_v2"));
-  nvmlfunction_unit32_nvmlDevice _nvmlDeviceGetHandleByIndex = reinterpret_cast<nvmlfunction_unit32_nvmlDevice>(dlsym(nvmlhandle.get(), "nvmlDeviceGetHandleByIndex_v2"));
+  nvmlfunction_void _nvmlInit = reinterpret_cast<nvmlfunction_void>(GETFUNC(nvmlhandle, "nvmlInit_v2"));
+  nvmlfunction_uint32 _nvmlDeviceGetCount = reinterpret_cast<nvmlfunction_uint32>(GETFUNC(nvmlhandle, "nvmlDeviceGetCount_v2"));
+  nvmlfunction_unit32_nvmlDevice _nvmlDeviceGetHandleByIndex = reinterpret_cast<nvmlfunction_unit32_nvmlDevice>(GETFUNC(nvmlhandle, "nvmlDeviceGetHandleByIndex_v2"));
 
   _nvmlInit();
 
@@ -47,7 +57,7 @@ NVMLDevice::NVMLDevice()
 
 std::map<std::string, unsigned long long> NVMLDevice::getEnergy()
 {
-  nvmlfunction_nvmlDevice_unsignedlonglong _nvmlDeviceGetTotalEnergyConsumption = reinterpret_cast<nvmlfunction_nvmlDevice_unsignedlonglong>(dlsym(nvmlhandle.get(), "nvmlDeviceGetTotalEnergyConsumption"));
+  nvmlfunction_nvmlDevice_unsignedlonglong _nvmlDeviceGetTotalEnergyConsumption = reinterpret_cast<nvmlfunction_nvmlDevice_unsignedlonglong>(GETFUNC(nvmlhandle, "nvmlDeviceGetTotalEnergyConsumption"));
   std::map<std::string, unsigned long long> energies;
   for (uint32_t i = 0; i < *device_count.get(); i++)
   {

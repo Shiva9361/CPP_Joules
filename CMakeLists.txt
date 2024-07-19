@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.2)
+cmake_minimum_required(VERSION 3.5)
 project(CPP_Joules VERSION 0.0.1 DESCRIPTION "Energy Measurement toolkit for cpp/cuda" LANGUAGES CXX)
 
-add_library(CPP_Joules STATIC)
+add_library(CPP_Joules SHARED)
 
 target_sources(CPP_Joules
     PRIVATE  
@@ -21,6 +21,9 @@ target_include_directories(CPP_Joules
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 
 )
+if (CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    target_compile_options(CPP_Joules PRIVATE "-fexceptions")
+endif()
 
 if(DEFINED CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     message(
@@ -52,11 +55,11 @@ set(public_headers
 set_target_properties(${PROJECT_NAME} PROPERTIES DEBUG_POSTFIX "d")
 set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER "${public_headers}")
 
-find_library(NVML_LIBRARY nvidia-ml PATHS /usr/local/cuda/lib64 /usr/local/cuda/lib /usr/lib /usr/lib64)
-target_link_libraries(CPP_Joules PUBLIC ${NVML_LIBRARY})
-if(NOT NVML_LIBRARY)
-    message(FATAL_ERROR "Could not find the NVML library.")
-endif()
+# find_library(NVML_LIBRARY nvidia-ml PATHS /usr/local/cuda/lib64 /usr/local/cuda/lib /usr/lib /usr/lib64)
+# target_link_libraries(CPP_Joules PUBLIC ${NVML_LIBRARY})
+# if(NOT NVML_LIBRARY)
+#     message(FATAL_ERROR "Could not find the NVML library.")
+# endif()
 
 include(GNUInstallDirs)
 

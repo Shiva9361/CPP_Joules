@@ -1,4 +1,6 @@
 *.out
+*.exe
 .vscode
 build
+install
 *.py
