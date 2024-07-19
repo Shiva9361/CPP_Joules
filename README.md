@@ -4,7 +4,8 @@
 
 - Uses Intel RAPL interface to get energy values
 - Uses NVML interface for getting GPU energy values
-- Needs read access to powercap
+- Needs read access to powercap in linux
+- Needs a 64bit windows system with nvml in system32 
 
 ## Instructions
 
