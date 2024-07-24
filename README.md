@@ -36,8 +36,12 @@
 - Even if you compile with the exe in a seperate place,
   in order to run, it still needs the dll along with it.
 
-### To use
+### To use in linux
 
 ```cpp!=
   #include<CPP_Joules/cppJoules.h>
 ```
+
+### To use in windows
+
+Copy the header files in include folder to your project
