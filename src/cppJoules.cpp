@@ -20,6 +20,9 @@ void EnergyTracker::start()
   start_energy.insert(rapl_energy.begin(), rapl_energy.end());
 
   std::map<std::string, unsigned long long> nvidia_energy;
+  /**
+   * Check if nvml can be used
+   */
   if (NVML_device.usable)
   {
     nvidia_energy = NVML_device.getEnergy();
@@ -70,7 +73,7 @@ void EnergyTracker::calculate_energy()
   }
   last_calculated_energies.clear();
   last_calculated_time = 0;
-  for (uint32_t i = 0; i < energy_readings.size() - 1; i++)
+  for (uint32_t i = 0; i < energy_readings.size() - 1; i += 2)
   {
     auto start = energy_readings[i];
     auto stop = energy_readings[i + 1];
