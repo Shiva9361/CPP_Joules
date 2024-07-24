@@ -6,7 +6,9 @@
 
 void EnergyTracker::start()
 {
-
+  /**
+   * Getting both the RAPL and NVML Energies
+   */
   if (state == STARTED)
   {
     std::cout << "Tracker already started" << std::endl;

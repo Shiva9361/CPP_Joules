@@ -62,7 +62,10 @@ RAPLDevice::RAPLDevice()
     }
   }
 #endif
-
+/**
+ * In windows we need to use the energy dll to get
+ * the required functions
+ */
 #ifdef _WIN64
   initialized = false;
   const char *path = "..\\dependencies\\EnergyLib64.dll";
@@ -126,10 +129,10 @@ std::string RAPLDevice::getName(std::string path)
 std::map<std::string, unsigned long long> RAPLDevice::getEnergy()
 {
   /**
-   * Function to get the energy counter values from Powercap
+   * Function to get the energy counter values from Powercap in linux
+   * For windows, uses the functions exposed by the energy dll
    */
   std::map<std::string, unsigned long long> energies;
-
 #ifdef __linux__
   for (auto device : devices)
   {
