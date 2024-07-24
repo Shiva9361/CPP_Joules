@@ -7,6 +7,9 @@
 #include "energy_state.h"
 #include "nvidia_devices.h"
 
+/**
+ * Windows requires us to expose the classes in dlls
+ */
 #ifdef _WIN32
 #define EXPOSE_DLL __declspec(dllexport)
 #else
@@ -22,7 +25,10 @@ enum TrackerState
 
 class EXPOSE_DLL EnergyTracker
 {
-  // std::chrono::time_point<std::chrono::system_clock> start_time, end_time;
+  /**
+   * The energy tracker class. Contains the necessary
+   * tools for tracking the energy.
+   */
   RAPLDevice RAPL_device;
   NVMLDevice NVML_device;
   std::vector<EnergyState> energy_readings;

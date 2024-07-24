@@ -58,9 +58,7 @@ int main() {
     for (int i=0;i<10e3;i++){
         matMulKernel<<<blocksPerGrid, threadsPerBlock>>>(d_A, d_B, d_C, N);
     }
-    tracker.stop();
-    tracker.calculate_energy();
-    tracker.print_energy();
+    
 
     // Copy result matrix back to host
     cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost);
@@ -74,6 +72,9 @@ int main() {
     free(h_A);
     free(h_B);
     free(h_C);
+    tracker.stop();
+    tracker.calculate_energy();
+    tracker.print_energy();
 
     printf("Matrix multiplication completed successfully.\n");
 
