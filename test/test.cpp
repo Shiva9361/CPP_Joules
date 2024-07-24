@@ -11,6 +11,7 @@ int main()
   tracker.start();
   std::this_thread::sleep_for(std::chrono::seconds(6));
   tracker.stop();
+  std::this_thread::sleep_for(std::chrono::seconds(2));
   tracker.start();
   std::this_thread::sleep_for(std::chrono::seconds(3));
   tracker.stop();
