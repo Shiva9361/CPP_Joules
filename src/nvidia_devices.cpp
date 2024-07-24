@@ -18,6 +18,9 @@ typedef void (*nvmlfunction_nvmlDevice_unsignedlonglong)(nvmlDevice_t, unsigned 
 
 NVMLDevice::NVMLDevice()
 {
+  /**
+   * In windows, the dll is found in the system32 folder.
+   */
 #ifdef _WIN64
   char tpath[MAX_PATH];
   GetSystemDirectoryA(tpath, MAX_PATH);
@@ -26,6 +29,9 @@ NVMLDevice::NVMLDevice()
   const char *path = fullpath.c_str();
 
 #endif
+/**
+ * In linux the so file is present in LD path
+ */
 #ifdef __linux__
   const char *path = PATH;
 #endif
@@ -37,11 +43,15 @@ NVMLDevice::NVMLDevice()
     usable = false;
     return;
   }
-
+  /**
+   * Getting the function pointers from the library
+   */
   nvmlfunction_void _nvmlInit = reinterpret_cast<nvmlfunction_void>(GETFUNC(nvmlhandle, "nvmlInit_v2"));
   nvmlfunction_uint32 _nvmlDeviceGetCount = reinterpret_cast<nvmlfunction_uint32>(GETFUNC(nvmlhandle, "nvmlDeviceGetCount_v2"));
   nvmlfunction_unit32_nvmlDevice _nvmlDeviceGetHandleByIndex = reinterpret_cast<nvmlfunction_unit32_nvmlDevice>(GETFUNC(nvmlhandle, "nvmlDeviceGetHandleByIndex_v2"));
-
+  /**
+   * Initiliztion of nvml and handlers
+   */
   _nvmlInit();
 
   device_count = std::make_unique<uint32_t>();
@@ -57,6 +67,9 @@ NVMLDevice::NVMLDevice()
 
 std::map<std::string, unsigned long long> NVMLDevice::getEnergy()
 {
+  /**
+   * Returns energy as a map to make it compatible with RAPL
+   */
   nvmlfunction_nvmlDevice_unsignedlonglong _nvmlDeviceGetTotalEnergyConsumption = reinterpret_cast<nvmlfunction_nvmlDevice_unsignedlonglong>(GETFUNC(nvmlhandle, "nvmlDeviceGetTotalEnergyConsumption"));
   std::map<std::string, unsigned long long> energies;
   for (uint32_t i = 0; i < *device_count.get(); i++)
