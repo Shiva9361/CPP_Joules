@@ -4,3 +4,5 @@
 build
 install
 *.py
+test.c
+.DS_Store
