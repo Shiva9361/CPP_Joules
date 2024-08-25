@@ -8,7 +8,7 @@ private:
   std::string message;
 
 public:
-  explicit CPPJoulesException(std::string msg) : message(msg){};
+  explicit CPPJoulesException(std::string msg) : message(std::move(msg)) {}
   const char *what() const noexcept override
   {
     return message.c_str();
