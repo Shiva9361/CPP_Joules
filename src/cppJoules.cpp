@@ -14,7 +14,7 @@ void EnergyTracker::start()
     std::cout << "Tracker already started" << std::endl;
     return;
   }
-  auto start_time = std::chrono::system_clock::now();
+  auto start_time = std::chrono::high_resolution_clock::now();
   std::map<std::string, unsigned long long> start_energy;
   auto rapl_energy = RAPL_device.getEnergy();
   start_energy.insert(rapl_energy.begin(), rapl_energy.end());
@@ -45,7 +45,7 @@ void EnergyTracker::stop()
     std::cout << "Tracker already stopped" << std::endl;
     return;
   }
-  auto end_time = std::chrono::system_clock::now();
+  auto end_time = std::chrono::high_resolution_clock::now();
   auto stop_energy = RAPL_device.getEnergy();
   std::map<std::string, unsigned long long> nvidia_energy;
 
@@ -77,7 +77,7 @@ void EnergyTracker::calculate_energy()
   {
     auto start = energy_readings[i];
     auto stop = energy_readings[i + 1];
-    int64_t delta_time = std::chrono::duration_cast<std::chrono::seconds>(stop.timestamp - start.timestamp).count();
+    float delta_time = static_cast<std::chrono::duration<float>>(stop.timestamp - start.timestamp).count();
 
     if (start.energies.size() != stop.energies.size())
     {

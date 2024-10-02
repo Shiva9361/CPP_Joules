@@ -34,7 +34,7 @@ class EXPOSE_DLL EnergyTracker
   std::vector<EnergyState> energy_readings;
   TrackerState state = UNINITIALIZED;
   std::map<std::string, long long> last_calculated_energies;
-  uint64_t last_calculated_time;
+  float last_calculated_time;
 
 public:
   void start();
