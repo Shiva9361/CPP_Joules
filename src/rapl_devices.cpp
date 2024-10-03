@@ -6,7 +6,6 @@
 #include <chrono>
 #include <memory>
 #include <unordered_map>
-#include <dlfcn.h>
 #include <MacEnergyLib.h>
 
 #ifdef _WIN64
