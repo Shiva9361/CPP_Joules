@@ -50,6 +50,10 @@ int main()
 }
 
 ```
+To compile example file filename.cpp
+```
+  g++ filename.cpp -lCPP_Joules -L./cppJoules
+```
 ___
 ### Common Errors
 - undefined refrence
