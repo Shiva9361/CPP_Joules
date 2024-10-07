@@ -1,9 +1,0 @@
-*.out
-*.exe
-.vscode
-build
-install
-*.py
-test.c
-test.cpp
-.DS_Store
