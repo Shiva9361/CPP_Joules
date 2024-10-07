@@ -36,12 +36,6 @@ NVMLDevice::NVMLDevice()
   const char *path = PATH;
 #endif
 
-#ifdef __APPLE__
-  // On macOS, you might use @rpath to locate dynamic libraries
-  // This example assumes the library is in a standard location or within your application bundle
-  // Adjust the path according to your setup
-  const char *path = "@rpath/libnvidia-ml.dylib";
-#endif
   nvmlhandle = OPENLIB(path);
   usable = true;
   if (!nvmlhandle)

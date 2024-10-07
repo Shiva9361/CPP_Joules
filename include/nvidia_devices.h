@@ -20,16 +20,6 @@
 #define GETFUNC(lib, fn) GetProcAddress((lib), (fn))
 #endif
 
-#ifdef __APPLE__
-#include <dlfcn.h>
-#define EXPOSE_DLL
-#define OPENLIB(libname) dlopen(libname, RTLD_LAZY)
-#define PATH "../dependencies/IntelPowerGadget.framework/IntelPowerGadget"
-#define GETFUNC(lib, func) dlsym((lib), (func))
-#define HANDLE void *
-#define CLOSELIB(handle) dlclose(handle)
-#endif
-
 #include "nvml.h"
 
 #include <vector>
