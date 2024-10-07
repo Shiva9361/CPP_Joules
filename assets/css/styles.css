@@ -8,6 +8,62 @@
  * Website: http://themes.3rdwavemedia.com/
 */
 /* ======= Base ======= */
+.code-container {
+  position: relative;
+  background: #2d2d2d;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.code {
+  font-family: monospace;
+  font-size: 16px;
+  color: #f8f8f2;
+}
+
+.copy-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #bbb;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.copy-button i {
+  margin-right: 5px;
+}
+
+.copy-button:hover {
+  color: #fff;
+}
+
+
+
+.simple-link {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.simple-link:hover {
+  color: #0056b3;
+}
+
+.highlight {
+  background-color: #e0e0e0; /* Light gray background */
+  padding: 2px 4px;          /* Padding around the text */
+  border-radius: 4px;        /* Rounded corners */
+  font-family: monospace;    /* Monospace font for code-like appearance */
+  font-weight: bold;         /* Make the text bold */
+}
 body {
   font-family: "Open Sans", arial, sans-serif;
   color: #494d55;

@@ -10,6 +10,7 @@
     <meta name="author" content="">    
     <link rel="shortcut icon" href="favicon.ico">  
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- FontAwesome JS -->
     <script defer src="assets/fontawesome/js/all.js"></script>
     <!-- Global CSS -->
@@ -31,31 +32,28 @@
                 <div class="branding">
                     <h1 class="logo">
                         <a href="index.html">
-<!--                             <span aria-hidden="true" class="icon_documents_alt icon"></span> -->
+                            <!-- <span aria-hidden="true" class="icon_documents_alt icon"></span> -->
                             <span class="text-highlight"></span><span class="text-bold">CPPJoules</span>
                         </a>
                     </h1>
                     
                 </div>
                 
-                <!-- <div class="top-search-box">
+                <div class="top-search-box">
 	                 <form class="form-inline search-form justify-content-center" action="" method="get">
-	            
 			            <input type="text" placeholder="Search..." name="search" class="form-control search-input">
-			            
 			            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
-			            
 			        </form>
-                </div> -->
+                </div>
                 
             </div><!--//container-->
         </header><!--//header-->
         <div class="doc-wrapper">
             <div class="container">
-                <!-- <div id="doc-header" class="doc-header text-center">
+                <div id="doc-header" class="doc-header text-center">
                     <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Quick Start</h1>
-                    <div class="meta"><i class="far fa-clock"></i> Last updated: Nov 21st, 2020</div>
-                </div>//doc-header -->
+                    <div class="meta"><i class="far fa-clock"></i> Last updated: Oct 7th,2024</div>
+                </div>
                 <div class="doc-body row">
                     <div class="doc-content col-md-9 col-12 order-1">
                         <div class="content-inner">
@@ -65,8 +63,11 @@
                                 <h3 class="block-title">Tool Description</h3>
                                 <div class="section-block">
                                     <p>
-                                    CPPJoules, a tool designed to measure the energy consumption of code snippets written in CPP. It is a wrapper interface developed on top of Intel
-					    RAPL, enabling the logging of energy traces directly from the operating system
+                                        <!-- CPPJoules, a tool designed to measure the energy consumption of code snippets written in CPP. It is a wrapper interface developed on top of Intel
+                                        RAPL, enabling the logging of energy traces directly from the operating system -->
+                                        CPPJoules, a dedicated tool designed specifically to measure the energy footprint of a host machine during 
+                                        the execution of a piece of C++ code. CPPJoules leverages the Intel Running Average Power Limit (RAPL) interface,
+                                        a well-established mechanism for reporting energy consumption of different system-on-chip (SoC) power domains
                                     </p>
 <!--                                     <p style="color: red;">
                                         <u>Note</u>: The current version of eTagger may have issues on runnning on some architectures of Mac systems.  
@@ -83,6 +84,10 @@
 					    <ul>
 					   <li>Intel processors from the Celeron, Pentium, Core i3, i7, i9, and Xeon series, featuring the Sandy Bridge or newer architecture.</li>
 					    <li>Linux distribution Debian based operating system. We have tested on Ubuntu 20.04 and 22.04 Versions(recommended).</li>
+                        <li>The g++ compiler version has to be above v11.0.0</li>
+                        <li>Windows has to have PowerGadget installed or can be installed 
+                            
+                        </li>
 					    <!-- <li>Have <a href="https://cran.r-project.org">R</a> installed in your system.</li> -->
 					   </ul>
 					</p>
@@ -101,9 +106,86 @@
                                     <h3 class="block-title" id="from-github">From Github</h3>
                                     <div class="code-block">
                                         
-                                        <!-- <p>STEP1: Clone or download this github repository:</p> -->
-                                        <!-- <p><code>git clone https://github.com/rishalab/RJoules.git</code></p> -->
-                                        <br>
+                                        <p>STEP1: Clone or download this github repository:</p>
+                                        <div class="code-container">
+                                            <div class="code" id="codeToCopy">git clone https://github.com/rishalab/CPPJoules.git</div>
+                                            <button class="copy-button" onclick="copyCode()">
+                                                <i class="far fa-clipboard"></i> Copy code
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <h3 class="block-title" id="from-github">Direct Installer Link</h3>
+                                    <h4 class="block-title" id="from-github">For Linux</h4>
+                                    <!-- <div class="code-block"> -->
+                                    <ol>                                        
+                                        <li><a id="downloadLinksh" href="https://raw.githubusercontent.com/Shiva9361/CPP_Joules/main/installer.sh" target="_blank" class="simple-link">Download CPP Joules for Linux</a></li>
+                                        <p>The file <span class="highlight">installer.sh</span> will be downloaded.</p>
+                                        
+                                        <li>in you terminal run the command : 
+                                            <div class="code-container">
+                                                <div class="code" id="codeToCopy">bash ./installer.sh</div>
+                                                <button class="copy-button" onclick="copyCode()">
+                                                    <i class="far fa-clipboard"></i> Copy code
+                                                </button>
+                                            </div>
+                                            <p>You will be prompted to enter your user password</p>
+                                        </li>
+                                        <li>The library will be installed in /usr/bin</li>
+                                        <li>You have to give read 'r' access to the rapl first</li>
+                                        <li>Run this code :                      
+                                            <div class="code-container">
+                                                <div class="code" id="codeToCopy">sudo chmod +r -R /sys/class/powercap/</div>
+                                                <button class="copy-button" onclick="copyCode()">
+                                                    <i class="far fa-clipboard"></i> Copy code
+                                                </button>
+                                            </div>
+                                            <p>Then to check if there is read access ,run this code : </p>
+                                                <div class="code-container">
+                                                    <div class="code" id="codeToCopy">cat /sys/class/powercap/</div>
+                                                    <button class="copy-button" onclick="copyCode()">
+                                                        <i class="far fa-clipboard"></i> Copy code
+                                                    </button>
+                                                </div>
+                                            <p>if it still doesn't work ,try this permissions : </p>
+                                            <div class="code-container">
+                                                <div class="code" id="codeToCopy">
+                                                    sudo chmod +r /sys/class/powercap/intel-rapl/intel-rapl:0/energy_uj<br>
+                                                    sudo chmod +r /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:0/energy_uj<br>
+                                                    sudo chmod +r /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:1/energy_uj<br>
+                                                    sudo chmod +r /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:2/energy_uj<br>
+                                                </div>
+                                                <button class="copy-button" onclick="copyCode()">
+                                                    <i class="far fa-clipboard"></i> Copy code
+                                                </button>
+                                            </div>
+                                     </li>
+                                        <li>Now you can directly use the header in your cpp file</li>
+                                        <div class="code-container">
+                                            <div class="code" id="codeToCopy">
+                                                #include&lt;cppjoules&gt;<br>
+                                                #include&lt;iostream&gt;<br><br>
+                                                int main(){<br>
+                                                    EnergyTracker tracker;<br>
+                                                    tracker.start();<br>
+                                                    //API CALLS;<br>
+                                                    tracker.stop();<br>
+                                                    tracker.calculate();<br>
+                                                    tracker.print_energy();<br>
+                                                    return 0;<br>
+                                                }
+                                            </div>
+                                            <button class="copy-button" onclick="copyCode()">
+                                                <i class="far fa-clipboard"></i> Copy code
+                                            </button>
+                                        </div>
+                                    </ol>
+                                    <h4 class="block-title" id="from-github">For Windows</h4>
+                                    <ol>
+                                        <li><a id="downloadLinkbat" href="https://raw.githubusercontent.com/Shiva9361/CPP_Joules/main/installer.bat" target="_blank" class="simple-link">Download CPP Joules for Windows</a></li>
+                                        <p>The file <span class="highlight">installer.bat</span> will be downloaded.</p>
+                                        <li>Right click on the <span class="highlight">installer.bat</span> file and click run as administrator </li>
+                                    </ol>
+                                    <br>
 <!--                                         <h5 id="running-backend">Running the RJoules backend</h5> -->
                                         <!-- <p>STEP2: Navigate into the RJoules_main directory, copy the path of energy_measurement.R</p>
                                         <p><code>cd RJoules/RJoules_main</code></p>
@@ -152,7 +234,7 @@
                                         <!-- <p>Load the extension directory in the Chrome browser in developer mode. 
                                             <a href="https://developer.chrome.com/docs/extensions/mv3/getstarted/">Instructions for loading</a></p> -->
                                         
-                                    </div><!--//code-block-->
+                                    <!-- </div>//code-block -->
                                     <h3 class="block-title" id="usage">Usage</h3>
                                     <div class="code-block">
                                         <!-- <p>Measuring energy consumption due to R code snippets.</p> -->
@@ -170,13 +252,14 @@
                                             <!-- <strong>Generation of Labels</strong> -->
                                             <p>
                                                 <!-- RJoules uses intel-RAPL interface to measure energy consumption. The tool is developed for getting package and dram domain energy consumption due to R code snippet. The internal workflow is described in the below figure. -->
+                                                CPPJoules leverages Intel’s RAPL and NVIDIA’s NVML libraries to measure energy consumption for both the CPU and GPU components. For CPU energy measurement, the tool utilizes Intel’s RAPL interface, which provides detailed energy traces data across various domains, including the CPU package, core, uncore, and DRAM. This is achieved through the Powercap interface on Linux and Intel Power Gadget on Windows.
                                             </p>
-                                            <img class="img-fluid" src="assets/images/demo/approach_diagram.png" alt="elegant icons" />
+                                            <img class="img-fluid" src="workflowdiagram.png" alt="elegant icons" />
                                             <br>
                                         <!-- </li> -->
-                                        <div style="height: 20px;"></div>
-                                        <li>
-                                            <!-- <strong>Working of Extension</strong>
+                                        <!-- <div style="height: 20px;"></div> -->
+                                        <!-- <li>
+                                            <strong>Working of Extension</strong>
                                             <p>
                                                 The approach of labeling described in the previous step is deployed on a local server using the Flask web framework. 
                                                 The extension monitors the browser forload of GitHub issues page. 
@@ -197,7 +280,7 @@
 
 
                             <section id="feature-section" class="doc-section">
-                                <h2 class="section-title">Code snippet creenshot</h2>
+                                <h2 class="section-title">Code snippet screenshot</h2>
                                 <div class="section-block">
                                     <a href="https://github.com/Shiva9361/CPP_Joules/releases/download/v1.0/CPP_Joules_linux.tar.gz" download>Download CPP Joules for Linux</a>
                                     <a href="https://github.com/Shiva9361/CPP_Joules/releases/download/v1.0/CPP_Joules_windows.tar.gz" download>Download CPP Joules for Windows</a>
@@ -362,6 +445,48 @@
     <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>      
     <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>                                                             
     <script type="text/javascript" src="assets/js/main.js"></script>
+    <script>
+        function copyCode() {
+            const codeElement = document.getElementById("codeToCopy");
+            const codeText = codeElement.innerText;
+            
+            navigator.clipboard.writeText(codeText).then(() => {
+                alert("Code copied to clipboard!");
+            }).catch(err => {
+                console.error("Failed to copy: ", err);
+            });
+        }
+        document.getElementById("downloadLinksh").addEventListener("click", function(event) {
+            event.preventDefault();
+            const url = this.href;
+            const fileName = "installer.sh";
+        
+            fetch(url)
+              .then(response => response.blob())
+              .then(blob => {
+                const link = document.createElement("a");
+                link.href = window.URL.createObjectURL(blob);
+                link.download = fileName;
+                link.click();
+              })
+              .catch(console.error);
+          });
+          document.getElementById("downloadLinkbat").addEventListener("click", function(event) {
+              event.preventDefault();
+              const url = this.href;
+              const fileName = "installer.bat";
+          
+              fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                  const link = document.createElement("a");
+                  link.href = window.URL.createObjectURL(blob);
+                  link.download = fileName;
+                  link.click();
+                })
+                .catch(console.error);
+            });
+    </script>
     
 </body>
 </html> 
