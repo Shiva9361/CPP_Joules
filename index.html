@@ -85,9 +85,7 @@
 					   <li>Intel processors from the Celeron, Pentium, Core i3, i7, i9, and Xeon series, featuring the Sandy Bridge or newer architecture.</li>
 					    <li>Linux distribution Debian based operating system. We have tested on Ubuntu 20.04 and 22.04 Versions(recommended).</li>
                         <li>The g++ compiler version has to be above v11.0.0</li>
-                        <li>Windows has to have PowerGadget installed or can be installed 
-                            
-                        </li>
+                        <li>Windows has to have PowerGadget installed or can be installed through our scripts</li>
 					    <!-- <li>Have <a href="https://cran.r-project.org">R</a> installed in your system.</li> -->
 					   </ul>
 					</p>
@@ -114,8 +112,8 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <h3 class="block-title" id="from-github">Direct Installer Link</h3>
-                                    <h4 class="block-title" id="from-github">For Linux</h4>
+                                    <h3 class="block-title" id="from-direct">Direct Installer Link</h3>
+                                    <h4 class="block-title" id="from-linux">For Linux</h4>
                                     <!-- <div class="code-block"> -->
                                     <ol>                                        
                                         <li><a id="downloadLinksh" href="https://raw.githubusercontent.com/Shiva9361/CPP_Joules/main/installer.sh" target="_blank" class="simple-link">Download CPP Joules for Linux</a></li>
@@ -179,11 +177,31 @@
                                             </button>
                                         </div>
                                     </ol>
-                                    <h4 class="block-title" id="from-github">For Windows</h4>
+                                    <h4 class="block-title" id="from-windows">For Windows</h4>
                                     <ol>
                                         <li><a id="downloadLinkbat" href="https://raw.githubusercontent.com/Shiva9361/CPP_Joules/main/installer.bat" target="_blank" class="simple-link">Download CPP Joules for Windows</a></li>
                                         <p>The file <span class="highlight">installer.bat</span> will be downloaded.</p>
                                         <li>Right click on the <span class="highlight">installer.bat</span> file and click run as administrator </li>
+                                        <li>To compile the file you need the command :
+                                            <div class="code-container">
+                                                <div class="code" id="codeToCopy">
+                                                    g++ file_name -lCPP_Joules -L./cppJoules
+                                                </div>
+                                                <button class="copy-button" onclick="copyCode()">
+                                                    <i class="far fa-clipboard"></i> Copy code
+                                                </button>
+                                            </div>  
+                                        </li>
+                                        <li>Then run the executable :
+                                            <div class="code-container">
+                                                <div class="code" id="codeToCopy">
+                                                    ./a.exe
+                                                </div>
+                                                <button class="copy-button" onclick="copyCode()">
+                                                    <i class="far fa-clipboard"></i> Copy code
+                                                </button>
+                                            </div>  
+                                        </li>
                                     </ol>
                                     <br>
 <!--                                         <h5 id="running-backend">Running the RJoules backend</h5> -->
@@ -282,12 +300,10 @@
                             <section id="feature-section" class="doc-section">
                                 <h2 class="section-title">Code snippet screenshot</h2>
                                 <div class="section-block">
-                                    <a href="https://github.com/Shiva9361/CPP_Joules/releases/download/v1.0/CPP_Joules_linux.tar.gz" download>Download CPP Joules for Linux</a>
-                                    <a href="https://github.com/Shiva9361/CPP_Joules/releases/download/v1.0/CPP_Joules_windows.tar.gz" download>Download CPP Joules for Windows</a>
                                     <ul style="list-style: none;">
                                         <li>
                                             <br>
-                                            <img class="img-fluid" src="assets/images/demo/Test_code.png" alt="screenshot" />
+                                            <!-- <img class="img-fluid" src="assets/images/demo/Test_code.png" alt="screenshot" /> -->
                                             <br><br>
                                         </li>
                                         <!-- <li>
@@ -395,8 +411,11 @@
                                     <nav class="doc-sub-menu nav flex-column">
                                         <a class="nav-link scrollto" href="#requirements">Requirements</a>
                                         <a class="nav-link scrollto" href="#from-github">From Github</a>
-                                        <a class="nav-link scrollto" href="#running-backend">Running the backend</a>
-                                        <a class="nav-link scrollto" href="#loading-extension">Loading the Chrome extension</a>
+                                        <a class="nav-link scrollto" href="#from-direct">Direct Installer Link</a>
+                                        <a class="nav-link scrollto" href="#from-linux">Linux</a>
+                                        <a class="nav-link scrollto" href="#from-windows">Windows</a>
+                                        <!-- <a class="nav-link scrollto" href="#running-backend">Running the backend</a> -->
+                                        <!-- <a class="nav-link scrollto" href="#loading-extension">Loading the Chrome extension</a> -->
                                         <a class="nav-link scrollto" href="#usage">Usage</a>
                                     </nav><!--//nav-->
                                     <a class="nav-link scrollto" href="#icons-section">Approach</a>
