@@ -16,7 +16,7 @@ int main()
   std::this_thread::sleep_for(std::chrono::seconds(3));
   tracker.stop();
   tracker.calculate_energy();
-  tracker.print_energy();
+  tracker.save_csv("a.csv");
 
   return 0;
 }

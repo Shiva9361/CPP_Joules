@@ -138,6 +138,13 @@ void EnergyTracker::print_energy()
 void EnergyTracker::save_csv(std::string file)
 {
   std::ofstream csv_file(file);
+  csv_file << "Time" << ",";
+  for (auto energy : last_calculated_energies)
+  {
+    csv_file << energy.first << ",";
+  }
+  csv_file << "\n";
+  csv_file << last_calculated_time << ",";
   for (auto energy : last_calculated_energies)
   {
     csv_file << energy.second << ",";

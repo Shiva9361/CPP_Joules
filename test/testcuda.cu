@@ -1,15 +1,18 @@
 #include <stdio.h>
 #include <cuda_runtime.h>
-#include <CPP_Joules/cppJoules.h>
+#include "../include/cppJoules.h"
 
 // CUDA kernel for matrix multiplication
-__global__ void matMulKernel(float* A, float* B, float* C, int N) {
+__global__ void matMulKernel(float *A, float *B, float *C, int N)
+{
     int row = blockIdx.y * blockDim.y + threadIdx.y;
     int col = blockIdx.x * blockDim.x + threadIdx.x;
     float sum = 0.0f;
 
-    if (row < N && col < N) {
-        for (int k = 0; k < N; ++k) {
+    if (row < N && col < N)
+    {
+        for (int k = 0; k < N; ++k)
+        {
             sum += A[row * N + k] * B[k * N + col];
         }
         C[row * N + col] = sum;
@@ -17,32 +20,35 @@ __global__ void matMulKernel(float* A, float* B, float* C, int N) {
 }
 
 // Function to initialize matrices with random values
-void initializeMatrix(float* mat, int N) {
-    for (int i = 0; i < N * N; ++i) {
+void initializeMatrix(float *mat, int N)
+{
+    for (int i = 0; i < N * N; ++i)
+    {
         mat[i] = static_cast<float>(rand()) / RAND_MAX;
     }
 }
 
-int main() {
+int main()
+{
     int N = 1024; // Size of the matrices (N x N)
     size_t size = N * N * sizeof(float);
 
     // Allocate host matrices
-    float* h_A = (float*)malloc(size);
-    float* h_B = (float*)malloc(size);
-    float* h_C = (float*)malloc(size);
+    float *h_A = (float *)malloc(size);
+    float *h_B = (float *)malloc(size);
+    float *h_C = (float *)malloc(size);
 
     // Initialize host matrices
     initializeMatrix(h_A, N);
     initializeMatrix(h_B, N);
 
     // Allocate device matrices
-    float* d_A;
-    float* d_B;
-    float* d_C;
-    cudaMalloc((void**)&d_A, size);
-    cudaMalloc((void**)&d_B, size);
-    cudaMalloc((void**)&d_C, size);
+    float *d_A;
+    float *d_B;
+    float *d_C;
+    cudaMalloc((void **)&d_A, size);
+    cudaMalloc((void **)&d_B, size);
+    cudaMalloc((void **)&d_C, size);
 
     // Copy host matrices to device
     cudaMemcpy(d_A, h_A, size, cudaMemcpyHostToDevice);
@@ -55,10 +61,10 @@ int main() {
     EnergyTracker tracker;
     // Launch the matrix multiplication kernel
     tracker.start();
-    for (int i=0;i<10e3;i++){
+    for (int i = 0; i < 10e3; i++)
+    {
         matMulKernel<<<blocksPerGrid, threadsPerBlock>>>(d_A, d_B, d_C, N);
     }
-    
 
     // Copy result matrix back to host
     cudaMemcpy(h_C, d_C, size, cudaMemcpyDeviceToHost);
