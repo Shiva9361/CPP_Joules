@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>CPPJoules: An Energy Measurement Tool for CPP</title>
     <!-- Meta -->
@@ -7,22 +8,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">    
-    <link rel="shortcut icon" href="favicon.ico">  
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link
+        href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- FontAwesome JS -->
     <script defer src="assets/fontawesome/js/all.js"></script>
     <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
-    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
     <link rel="stylesheet" href="assets/plugins/prism/prism.css">
-    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">  
-      
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">
+
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
-    
-</head> 
+
+</head>
 
 <body class="body-green">
     <div class="page-wrapper">
@@ -36,16 +39,17 @@
                             <span class="text-highlight"></span><span class="text-bold">CPPJoules</span>
                         </a>
                     </h1>
-                    
+
                 </div>
-                
+
                 <div class="top-search-box">
-	                 <form class="form-inline search-form justify-content-center" action="" method="get">
-			            <input type="text" placeholder="Search..." name="search" class="form-control search-input">
-			            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
-			        </form>
+                    <form class="form-inline search-form justify-content-center" action="" method="get">
+                        <input type="text" placeholder="Search..." name="search" class="form-control search-input">
+                        <button type="submit" class="btn search-btn" value="Search"><i
+                                class="fas fa-search"></i></button>
+                    </form>
                 </div>
-                
+
             </div><!--//container-->
         </header><!--//header-->
         <div class="doc-wrapper">
@@ -65,32 +69,39 @@
                                     <p>
                                         <!-- CPPJoules, a tool designed to measure the energy consumption of code snippets written in CPP. It is a wrapper interface developed on top of Intel
                                         RAPL, enabling the logging of energy traces directly from the operating system -->
-                                        CPPJoules, a dedicated tool designed specifically to measure the energy footprint of a host machine during 
-                                        the execution of a piece of C++ code. CPPJoules leverages the Intel Running Average Power Limit (RAPL) interface,
-                                        a well-established mechanism for reporting energy consumption of different system-on-chip (SoC) power domains
+                                        CPPJoules, a dedicated tool designed specifically to measure the energy
+                                        footprint of a host machine during
+                                        the execution of a piece of C++ code. CPPJoules leverages the Intel Running
+                                        Average Power Limit (RAPL) interface,
+                                        a well-established mechanism for reporting energy consumption of different
+                                        system-on-chip (SoC) power domains. For
+                                        reporting Nvidia GPU values, it uses the NVML Library provided by Nvidia.
                                     </p>
-<!--                                     <p style="color: red;">
+                                    <!--                                     <p style="color: red;">
                                         <u>Note</u>: The current version of eTagger may have issues on runnning on some architectures of Mac systems.  
                                     </p> -->
-<!--                                     <a href="https://github.com/rishalab/eTagger/archive/main.zip" class="btn btn-green" target="_blank"><i class="fas fa-download"></i> Download Tool Zip</a> -->
+                                    <!--                                     <a href="https://github.com/rishalab/eTagger/archive/main.zip" class="btn btn-green" target="_blank"><i class="fas fa-download"></i> Download Tool Zip</a> -->
                                 </div>
                             </section><!--//doc-section-->
                             <section id="installation-section" class="doc-section">
                                 <h2 class="section-title">Installation</h2>
-                                <div id="step1"  class="section-block">
+                                <div id="step1" class="section-block">
                                     <h3 class="block-title" id="requirements">Requirements</h3>
                                     <div class="code-block">
                                         <p>
-					    <ul>
-					   <li>Intel processors from the Celeron, Pentium, Core i3, i7, i9, and Xeon series, featuring the Sandy Bridge or newer architecture.</li>
-					    <li>Linux distribution Debian based operating system. We have tested on Ubuntu 20.04 and 22.04 Versions(recommended).</li>
-                        <li>The g++ compiler version has to be above v11.0.0</li>
-                        <li>Windows has to have PowerGadget installed or can be installed through our scripts</li>
-					    <!-- <li>Have <a href="https://cran.r-project.org">R</a> installed in your system.</li> -->
-					   </ul>
-					</p>
-				    
-				    <!-- <b>If you are using Ubuntu 22.04 please run the below commands to install R.</b>
+                                        <ul>
+                                            <li>Intel processors from the Celeron, Pentium, Core i3, i7, i9, and Xeon
+                                                series, featuring the Sandy Bridge or newer architecture.</li>
+                                            <li>Linux distribution Debian based operating system. We have tested on
+                                                Ubuntu 20.04 and 22.04 Versions(recommended).</li>
+                                            <li>The g++ compiler version has to be above v11.0.0</li>
+                                            <li>Windows has to have PowerGadget installed or can be installed through
+                                                our scripts</li>
+                                            <!-- <li>Have <a href="https://cran.r-project.org">R</a> installed in your system.</li> -->
+                                        </ul>
+                                        </p>
+
+                                        <!-- <b>If you are using Ubuntu 22.04 please run the below commands to install R.</b>
 				    <ul>
 					    <li>wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | sudo gpg --dearmor -o /usr/share/keyrings/r-project.gpg</li>
 
@@ -98,15 +109,16 @@
 					    <li>sudo apt update</li>
 					    <li>sudo apt install --no-install-recommends r-base</li>
 					    <li>sudo -i R</li> -->
-					   </ul>
-					    
+                                        </ul>
+
                                     </div>
                                     <h3 class="block-title" id="from-github">From Github</h3>
                                     <div class="code-block">
-                                        
+
                                         <p>STEP1: Clone or download this github repository:</p>
                                         <div class="code-container">
-                                            <div class="code" id="codeToCopy">git clone https://github.com/rishalab/CPPJoules.git</div>
+                                            <div class="code" id="codeToCopy">git clone
+                                                https://github.com/rishalab/CPPJoules.git</div>
                                             <button class="copy-button" onclick="copyCode()">
                                                 <i class="far fa-clipboard"></i> Copy code
                                             </button>
@@ -115,11 +127,14 @@
                                     <h3 class="block-title" id="from-direct">Direct Installer Link</h3>
                                     <h4 class="block-title" id="from-linux">For Linux</h4>
                                     <!-- <div class="code-block"> -->
-                                    <ol>                                        
-                                        <li><a id="downloadLinksh" href="https://raw.githubusercontent.com/Shiva9361/CPP_Joules/main/installer.sh" target="_blank" class="simple-link">Download CPP Joules for Linux</a></li>
+                                    <ol>
+                                        <li><a id="downloadLinksh"
+                                                href="https://raw.githubusercontent.com/Shiva9361/CPP_Joules/main/installer.sh"
+                                                target="_blank" class="simple-link">Download CPP Joules for Linux</a>
+                                        </li>
                                         <p>The file <span class="highlight">installer.sh</span> will be downloaded.</p>
-                                        
-                                        <li>in you terminal run the command : 
+
+                                        <li>in you terminal run the command :
                                             <div class="code-container">
                                                 <div class="code" id="codeToCopy">bash ./installer.sh</div>
                                                 <button class="copy-button" onclick="copyCode()">
@@ -130,46 +145,51 @@
                                         </li>
                                         <li>The library will be installed in /usr/bin</li>
                                         <li>You have to give read 'r' access to the rapl first</li>
-                                        <li>Run this code :                      
+                                        <li>Run this code :
                                             <div class="code-container">
-                                                <div class="code" id="codeToCopy">sudo chmod +r -R /sys/class/powercap/</div>
+                                                <div class="code" id="codeToCopy">sudo chmod +r -R /sys/class/powercap/
+                                                </div>
                                                 <button class="copy-button" onclick="copyCode()">
                                                     <i class="far fa-clipboard"></i> Copy code
                                                 </button>
                                             </div>
                                             <p>Then to check if there is read access ,run this code : </p>
-                                                <div class="code-container">
-                                                    <div class="code" id="codeToCopy">cat /sys/class/powercap/</div>
-                                                    <button class="copy-button" onclick="copyCode()">
-                                                        <i class="far fa-clipboard"></i> Copy code
-                                                    </button>
-                                                </div>
+                                            <div class="code-container">
+                                                <div class="code" id="codeToCopy">cat /sys/class/powercap/</div>
+                                                <button class="copy-button" onclick="copyCode()">
+                                                    <i class="far fa-clipboard"></i> Copy code
+                                                </button>
+                                            </div>
                                             <p>if it still doesn't work ,try this permissions : </p>
                                             <div class="code-container">
                                                 <div class="code" id="codeToCopy">
-                                                    sudo chmod +r /sys/class/powercap/intel-rapl/intel-rapl:0/energy_uj<br>
-                                                    sudo chmod +r /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:0/energy_uj<br>
-                                                    sudo chmod +r /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:1/energy_uj<br>
-                                                    sudo chmod +r /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:2/energy_uj<br>
+                                                    sudo chmod +r
+                                                    /sys/class/powercap/intel-rapl/intel-rapl:0/energy_uj<br>
+                                                    sudo chmod +r
+                                                    /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:0/energy_uj<br>
+                                                    sudo chmod +r
+                                                    /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:1/energy_uj<br>
+                                                    sudo chmod +r
+                                                    /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:2/energy_uj<br>
                                                 </div>
                                                 <button class="copy-button" onclick="copyCode()">
                                                     <i class="far fa-clipboard"></i> Copy code
                                                 </button>
                                             </div>
-                                     </li>
+                                        </li>
                                         <li>Now you can directly use the header in your cpp file</li>
                                         <div class="code-container">
                                             <div class="code" id="codeToCopy">
                                                 #include&lt;cppjoules&gt;<br>
                                                 #include&lt;iostream&gt;<br><br>
                                                 int main(){<br>
-                                                    EnergyTracker tracker;<br>
-                                                    tracker.start();<br>
-                                                    //API CALLS;<br>
-                                                    tracker.stop();<br>
-                                                    tracker.calculate();<br>
-                                                    tracker.print_energy();<br>
-                                                    return 0;<br>
+                                                EnergyTracker tracker;<br>
+                                                tracker.start();<br>
+                                                //API CALLS;<br>
+                                                tracker.stop();<br>
+                                                tracker.calculate();<br>
+                                                tracker.print_energy();<br>
+                                                return 0;<br>
                                                 }
                                             </div>
                                             <button class="copy-button" onclick="copyCode()">
@@ -179,9 +199,13 @@
                                     </ol>
                                     <h4 class="block-title" id="from-windows">For Windows</h4>
                                     <ol>
-                                        <li><a id="downloadLinkbat" href="https://raw.githubusercontent.com/Shiva9361/CPP_Joules/main/installer.bat" target="_blank" class="simple-link">Download CPP Joules for Windows</a></li>
+                                        <li><a id="downloadLinkbat"
+                                                href="https://raw.githubusercontent.com/Shiva9361/CPP_Joules/main/installer.bat"
+                                                target="_blank" class="simple-link">Download CPP Joules for Windows</a>
+                                        </li>
                                         <p>The file <span class="highlight">installer.bat</span> will be downloaded.</p>
-                                        <li>Right click on the <span class="highlight">installer.bat</span> file and click run as administrator </li>
+                                        <li>Right click on the <span class="highlight">installer.bat</span> file and
+                                            click run as administrator </li>
                                         <li>To compile the file you need the command :
                                             <div class="code-container">
                                                 <div class="code" id="codeToCopy">
@@ -190,7 +214,7 @@
                                                 <button class="copy-button" onclick="copyCode()">
                                                     <i class="far fa-clipboard"></i> Copy code
                                                 </button>
-                                            </div>  
+                                            </div>
                                         </li>
                                         <li>Then run the executable :
                                             <div class="code-container">
@@ -200,12 +224,12 @@
                                                 <button class="copy-button" onclick="copyCode()">
                                                     <i class="far fa-clipboard"></i> Copy code
                                                 </button>
-                                            </div>  
+                                            </div>
                                         </li>
                                     </ol>
                                     <br>
-<!--                                         <h5 id="running-backend">Running the RJoules backend</h5> -->
-                                        <!-- <p>STEP2: Navigate into the RJoules_main directory, copy the path of energy_measurement.R</p>
+                                    <!--                                         <h5 id="running-backend">Running the RJoules backend</h5> -->
+                                    <!-- <p>STEP2: Navigate into the RJoules_main directory, copy the path of energy_measurement.R</p>
                                         <p><code>cd RJoules/RJoules_main</code></p>
                                         <p><code>pwd</code></p>
 					                    <p>For testing we have provided few test files here<a href=""></a>. Take any of the test file and update the PATH following STEP3 and run the below commands</p>
@@ -213,13 +237,13 @@
                                         <code>R&lt;TESTFILENAME.R</code>
                                         <p>STEP3: If you want to measure energy in your R script. Create a R script example. R and Import/source RJoules</p>
                                         <p><code>source("PATH/energy_measurement.R")</code></p> -->
-<!--                                         <p style="color: red;">
+                                    <!--                                         <p style="color: red;">
                                             <u>Note</u>: The <a href="https://pypi.org/project/sentence-transformers/">sentence-transformers</a>
                                             may not get installed on some architectures of Mac systems. In such cases, kindly install the package
                                             manually with conda (requires conda environment installed) using the following command.
                                         </p> -->
-                                        <!-- <br> -->
-					                    <!-- <p>STEP4: Write the code for which energy measurements need to be done inside a function block as below example in example.R.</p>
+                                    <!-- <br> -->
+                                    <!-- <p>STEP4: Write the code for which energy measurements need to be done inside a function block as below example in example.R.</p>
                                         <p><code>test_foo<-function(){<br>
   
   						                print("This is my foo function..")<br>
@@ -235,7 +259,7 @@
                                             <p>STEP7: Check the output in output.csv file</p>
                                             <p><code>vi output.csv</code></p>
                                         <br> -->
-<!--                                         <h5 id="loading-extension">Loading the Chrome extension</h5>
+                                    <!--                                         <h5 id="loading-extension">Loading the Chrome extension</h5>
                                         <p>Select the extensions option in control and customize menu in the Chrome browser</p>
                                         <p><code>Customize and Control > More Tools > Extensions</code></p>
                                         <img class="extensions" src="assets/images/demo/extensions_menu.png" alt="extensions menu">
@@ -244,20 +268,20 @@
                                         <img class="extensions" src="assets/images/demo/load_unpacked.png" alt="load unpacked">
                                         <p>Once the extension is loaded, enable it and allow it to work in incognito:</p>
                                         <code>Details > Allow in incognito</code> -->
-                                        <!-- <br>
+                                    <!-- <br>
                                         <img class="extensions" src="assets/images/demo/code.png" alt="plugin"> -->
-                                        <!-- <img class="extensions" src="assets/images/demo/allow_incognito.png" alt="plugin"> -->
+                                    <!-- <img class="extensions" src="assets/images/demo/allow_incognito.png" alt="plugin"> -->
 
-                                        <!-- <p><strong>Be sure to have CORS disabled on your browser.</strong></p> -->
-                                        <!-- <p>Load the extension directory in the Chrome browser in developer mode. 
+                                    <!-- <p><strong>Be sure to have CORS disabled on your browser.</strong></p> -->
+                                    <!-- <p>Load the extension directory in the Chrome browser in developer mode. 
                                             <a href="https://developer.chrome.com/docs/extensions/mv3/getstarted/">Instructions for loading</a></p> -->
-                                        
+
                                     <!-- </div>//code-block -->
                                     <h3 class="block-title" id="usage">Usage</h3>
                                     <div class="code-block">
                                         <!-- <p>Measuring energy consumption due to R code snippets.</p> -->
                                         <!-- <p>Ex: <a href="https://github.com/iNPUTmice/Conversations">iNPUTmice/Conversations</a></p> -->
-                                       
+
                                         <!-- <img src="assets/images/demo/isssues_tab.png" alt="issues tab"> -->
                                     </div>
                                 </div><!--//section-block-->
@@ -266,17 +290,22 @@
                                 <h2 class="section-title">Approach diagram</h2>
                                 <div class="section-block">
                                     <!-- <ul> -->
-                                        <!-- <li> -->
-                                            <!-- <strong>Generation of Labels</strong> -->
-                                            <p>
-                                                <!-- RJoules uses intel-RAPL interface to measure energy consumption. The tool is developed for getting package and dram domain energy consumption due to R code snippet. The internal workflow is described in the below figure. -->
-                                                CPPJoules leverages Intel’s RAPL and NVIDIA’s NVML libraries to measure energy consumption for both the CPU and GPU components. For CPU energy measurement, the tool utilizes Intel’s RAPL interface, which provides detailed energy traces data across various domains, including the CPU package, core, uncore, and DRAM. This is achieved through the Powercap interface on Linux and Intel Power Gadget on Windows.
-                                            </p>
-                                            <img class="img-fluid" src="workflowdiagram.png" alt="elegant icons" />
-                                            <br>
-                                        <!-- </li> -->
-                                        <!-- <div style="height: 20px;"></div> -->
-                                        <!-- <li>
+                                    <!-- <li> -->
+                                    <!-- <strong>Generation of Labels</strong> -->
+                                    <p>
+                                        <!-- RJoules uses intel-RAPL interface to measure energy consumption. The tool is developed for getting package and dram domain energy consumption due to R code snippet. The internal workflow is described in the below figure. -->
+                                        CPPJoules leverages Intel’s RAPL and NVIDIA’s NVML libraries to measure energy
+                                        consumption for both the CPU and GPU components. For CPU energy measurement, the
+                                        tool utilizes Intel’s RAPL interface, which provides detailed energy traces data
+                                        across various domains, including the CPU package, core, uncore, and DRAM. This
+                                        is achieved through the Powercap interface on Linux and Intel Power Gadget on
+                                        Windows.
+                                    </p>
+                                    <img class="img-fluid" src="workflowdiagram.png" alt="elegant icons" />
+                                    <br>
+                                    <!-- </li> -->
+                                    <!-- <div style="height: 20px;"></div> -->
+                                    <!-- <li>
                                             <strong>Working of Extension</strong>
                                             <p>
                                                 The approach of labeling described in the previous step is deployed on a local server using the Flask web framework. 
@@ -292,7 +321,7 @@
                                         </li> -->
                                     <!-- </ul> -->
 
-                                
+
                             </section>
 
 
@@ -323,17 +352,17 @@
                                         </li> -->
                                     </ul>
                                 </div>
-                                
+
                             </section>
 
                             <section id="uses-section" class="doc-section">
                                 <h2 class="section-title">Goal</h2>
                                 <div class="section-block">
-                                    
-                                            <!-- Helping developers and practitioners to develope energy efficient code in R language. -->
-                                  
+
+                                    <!-- Helping developers and practitioners to develope energy efficient code in R language. -->
+
                                 </div>
-                                
+
                             </section>
 
 
@@ -361,151 +390,152 @@
                                 </div>
                                 
                             </section>-->
-				
-			<section id="result-section" class="doc-section">
+
+                            <section id="result-section" class="doc-section">
                                 <h2 class="section-title">Results</h2>
                                 <div class="section-block">
                                     <!-- The evaluation experiments have been done on 3 systems of different configurations considering 4 machine learning algorithms. 
                                     <strong><a href="https://github.com/Rajrupa1998/RJoules/tree/main/Evaluation/">Results</a></strong> -->
-                                    
-                                    
+
+
                                 </div>
-                                
+
                             </section>
-                            
-                            
-                             
-                            
-                            
-                
-                            
-                            
-                            
+
+
+
+
+
+
+
+
+
                             <section id="video-section" class="doc-section">
                                 <h2 class="section-title">Demo Video</h2>
                                 <div class="section-block">
                                     <div class="row">
                                         <div class="col-md-6 col-12">
-                                            
+
                                             <div class="embed-responsive embed-responsive-4by3">
                                                 <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/yMKFuvAM-DE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                                                 <!-- <iframe width="729" height="410" src="https://www.youtube.com/embed/W6yiaXK2rEM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                                                 <!-- <iframe width="729" height="410" src="https://www.youtube.com/embed/eLcOIPiGt_g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                                                 <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/GNrJfZ0RCVI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                                             </div>
-						<div>The output file name has been updated as *.csv</div>
+                                            <div>The output file name has been updated as *.csv</div>
                                         </div>
                                     </div>
                                 </div>
-                            
-                            
+
+
                             </section>
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
                     <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
                         <div id="doc-nav" class="doc-nav">
-	                        
-	                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
-	                                <!-- <a class="nav-link scrollto" href="#download-section">Download</a> -->
-	                                <a class="nav-link scrollto" href="#installation-section">Installation</a>
-                                    <nav class="doc-sub-menu nav flex-column">
-                                        <a class="nav-link scrollto" href="#requirements">Requirements</a>
-                                        <a class="nav-link scrollto" href="#from-github">From Github</a>
-                                        <a class="nav-link scrollto" href="#from-direct">Direct Installer Link</a>
-                                        <a class="nav-link scrollto" href="#from-linux">Linux</a>
-                                        <a class="nav-link scrollto" href="#from-windows">Windows</a>
-                                        <!-- <a class="nav-link scrollto" href="#running-backend">Running the backend</a> -->
-                                        <!-- <a class="nav-link scrollto" href="#loading-extension">Loading the Chrome extension</a> -->
-                                        <a class="nav-link scrollto" href="#usage">Usage</a>
-                                    </nav><!--//nav-->
-                                    <a class="nav-link scrollto" href="#icons-section">Approach</a>
-                                    <a class="nav-link scrollto" href="#feature-section">Screenshots</a>
-                                    <a class="nav-link scrollto" href="#uses-section">Goals</a>
-                                    <!-- <a class="nav-link scrollto" href="#metric-section">Metrics</a> -->
-					<a class="nav-link scrollto" href="#result-section">Results</a>
-                                    <!-- <nav class="doc-sub-menu nav flex-column">
+
+                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+                                <!-- <a class="nav-link scrollto" href="#download-section">Download</a> -->
+                                <a class="nav-link scrollto" href="#installation-section">Installation</a>
+                                <nav class="doc-sub-menu nav flex-column">
+                                    <a class="nav-link scrollto" href="#requirements">Requirements</a>
+                                    <a class="nav-link scrollto" href="#from-github">From Github</a>
+                                    <a class="nav-link scrollto" href="#from-direct">Direct Installer Link</a>
+                                    <a class="nav-link scrollto" href="#from-linux">Linux</a>
+                                    <a class="nav-link scrollto" href="#from-windows">Windows</a>
+                                    <!-- <a class="nav-link scrollto" href="#running-backend">Running the backend</a> -->
+                                    <!-- <a class="nav-link scrollto" href="#loading-extension">Loading the Chrome extension</a> -->
+                                    <a class="nav-link scrollto" href="#usage">Usage</a>
+                                </nav><!--//nav-->
+                                <a class="nav-link scrollto" href="#icons-section">Approach</a>
+                                <a class="nav-link scrollto" href="#feature-section">Screenshots</a>
+                                <a class="nav-link scrollto" href="#uses-section">Goals</a>
+                                <!-- <a class="nav-link scrollto" href="#metric-section">Metrics</a> -->
+                                <a class="nav-link scrollto" href="#result-section">Results</a>
+                                <!-- <nav class="doc-sub-menu nav flex-column">
                                         <a class="nav-link scrollto" href="#html">Parsing class</a>
                                     </nav>//nav -->
-	                                <!-- <a class="nav-link scrollto" href="#tables-section">Results</a> -->
-	                                <a class="nav-link scrollto" href="#video-section">Demo Video</a>
-	                            </nav><!--//doc-menu-->
-	                        
+                                <!-- <a class="nav-link scrollto" href="#tables-section">Results</a> -->
+                                <a class="nav-link scrollto" href="#video-section">Demo Video</a>
+                            </nav><!--//doc-menu-->
+
                         </div>
                     </div><!--//doc-sidebar-->
-                </div><!--//doc-body-->              
+                </div><!--//doc-body-->
             </div><!--//container-->
         </div><!--//doc-wrapper-->
-        
+
         <div id="promo-block" class="promo-block">
             <div class="container">
                 <div class="promo-block-inner">
-                   
+
                     <!-- <h3 class="promo-title">Contributors</h3> -->
                     <div class="content-holder col-lg-7 col-md-6 col-7">
                         <div class="content-holder-inner">
                             <div class="desc">
                                 <h3 class="promo-title">Contributors</h3>
                                 <!-- <p> Rajrupa chattaraj, Sridhar Chimalakonda</p> -->
-                                 <p>Person 1, Person 2, Person 3</p>
+                                <p>Person 1, Person 2, Person 3</p>
                                 <!-- <a class="btn btn-cta" href="" target="_blank"><i class="fas fa-external-link-alt"></i> Preprint</a> -->
                             </div><!--//desc-->
                         </div><!--//content-holder-inner-->
                     </div><!--//content-holder-->
 
-                </div><!--//promo-block-inner-->  
+                </div><!--//promo-block-inner-->
             </div><!--//container-->
         </div><!--//promo-block-->
-        
+
     </div><!--//page-wrapper-->
-    <!-- Main Javascript -->          
+    <!-- Main Javascript -->
     <script type="text/javascript" src="assets/plugins/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>    
-    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>      
-    <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>                                                             
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
     <script>
         function copyCode() {
             const codeElement = document.getElementById("codeToCopy");
             const codeText = codeElement.innerText;
-            
+
             navigator.clipboard.writeText(codeText).then(() => {
                 alert("Code copied to clipboard!");
             }).catch(err => {
                 console.error("Failed to copy: ", err);
             });
         }
-        document.getElementById("downloadLinksh").addEventListener("click", function(event) {
+        document.getElementById("downloadLinksh").addEventListener("click", function (event) {
             event.preventDefault();
             const url = this.href;
             const fileName = "installer.sh";
-        
+
             fetch(url)
-              .then(response => response.blob())
-              .then(blob => {
-                const link = document.createElement("a");
-                link.href = window.URL.createObjectURL(blob);
-                link.download = fileName;
-                link.click();
-              })
-              .catch(console.error);
-          });
-          document.getElementById("downloadLinkbat").addEventListener("click", function(event) {
-              event.preventDefault();
-              const url = this.href;
-              const fileName = "installer.bat";
-          
-              fetch(url)
                 .then(response => response.blob())
                 .then(blob => {
-                  const link = document.createElement("a");
-                  link.href = window.URL.createObjectURL(blob);
-                  link.download = fileName;
-                  link.click();
+                    const link = document.createElement("a");
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = fileName;
+                    link.click();
                 })
                 .catch(console.error);
-            });
+        });
+        document.getElementById("downloadLinkbat").addEventListener("click", function (event) {
+            event.preventDefault();
+            const url = this.href;
+            const fileName = "installer.bat";
+
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const link = document.createElement("a");
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = fileName;
+                    link.click();
+                })
+                .catch(console.error);
+        });
     </script>
-    
+
 </body>
-</html> 
+
+</html>
