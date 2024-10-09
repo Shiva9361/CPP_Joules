@@ -20,6 +20,9 @@ class EXPOSE_DLL RAPLDevice
 #elif __linux__
   std::string RAPL_API_PATH = "/sys/class/powercap/intel-rapl/";
 #define RAPLDEVICETYPE std::unordered_map<std::string, std::string>
+#elif __APPLE__
+  void *handler;
+#define RAPLDEVICETYPE std::unordered_map<std::string, std::pair<int, int>>
 #endif
   std::string getName(std::string path);
 

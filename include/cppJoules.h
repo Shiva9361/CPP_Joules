@@ -3,9 +3,7 @@
 #include <iostream>
 #include <chrono>
 #include <map>
-#include "rapl_devices.h"
-#include "energy_state.h"
-#include "nvidia_devices.h"
+#include <vector>
 
 /**
  * Windows requires us to expose the classes in dlls
@@ -15,6 +13,14 @@
 #else
 #define EXPOSE_DLL
 #endif
+
+/**
+ * Forward Declarations
+ */
+
+class RAPLDevice;
+class NVMLDevice;
+class EnergyState;
 
 enum TrackerState
 {
@@ -29,14 +35,15 @@ class EXPOSE_DLL EnergyTracker
    * The energy tracker class. Contains the necessary
    * tools for tracking the energy.
    */
-  RAPLDevice RAPL_device;
-  NVMLDevice NVML_device;
-  std::vector<EnergyState> energy_readings;
+  RAPLDevice *RAPL_device;
+  NVMLDevice *NVML_device;
+  std::vector<EnergyState *> energy_readings;
   TrackerState state = UNINITIALIZED;
   std::map<std::string, long long> last_calculated_energies;
   float last_calculated_time;
 
 public:
+  EnergyTracker();
   void start();
   void stop();
   void calculate_energy();

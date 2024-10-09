@@ -1,4 +1,4 @@
-#include "../include/nvidia_devices.h"
+#include "nvidia_devices.h"
 #include <string>
 #include <memory>
 #include <iostream>

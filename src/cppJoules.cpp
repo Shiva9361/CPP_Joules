@@ -3,6 +3,15 @@
 #include <iostream>
 #include <fstream>
 #include <filesystem>
+#include "rapl_devices.h"
+#include "nvidia_devices.h"
+#include "energy_state.h"
+
+EnergyTracker::EnergyTracker()
+{
+  RAPL_device = new RAPLDevice();
+  NVML_device = new NVMLDevice();
+}
 
 void EnergyTracker::start()
 {
@@ -16,19 +25,19 @@ void EnergyTracker::start()
   }
   auto start_time = std::chrono::high_resolution_clock::now();
   std::map<std::string, unsigned long long> start_energy;
-  auto rapl_energy = RAPL_device.getEnergy();
+  auto rapl_energy = RAPL_device->getEnergy();
   start_energy.insert(rapl_energy.begin(), rapl_energy.end());
 
   std::map<std::string, unsigned long long> nvidia_energy;
   /**
    * Check if nvml can be used
    */
-  if (NVML_device.usable)
+  if (NVML_device->usable)
   {
-    nvidia_energy = NVML_device.getEnergy();
+    nvidia_energy = NVML_device->getEnergy();
     start_energy.insert(nvidia_energy.begin(), nvidia_energy.end());
   }
-  EnergyState energy = EnergyState(start_time, start_energy);
+  EnergyState *energy = new EnergyState(start_time, start_energy);
   energy_readings.push_back(energy);
   state = STARTED;
 }
@@ -46,15 +55,15 @@ void EnergyTracker::stop()
     return;
   }
   auto end_time = std::chrono::high_resolution_clock::now();
-  auto stop_energy = RAPL_device.getEnergy();
+  auto stop_energy = RAPL_device->getEnergy();
   std::map<std::string, unsigned long long> nvidia_energy;
 
-  if (NVML_device.usable)
+  if (NVML_device->usable)
   {
-    nvidia_energy = NVML_device.getEnergy();
+    nvidia_energy = NVML_device->getEnergy();
     stop_energy.insert(nvidia_energy.begin(), nvidia_energy.end());
   }
-  EnergyState energy = EnergyState(end_time, stop_energy);
+  EnergyState *energy = new EnergyState(end_time, stop_energy);
   energy_readings.push_back(energy);
   state = STOPPED;
 }
@@ -77,37 +86,37 @@ void EnergyTracker::calculate_energy()
   {
     auto start = energy_readings[i];
     auto stop = energy_readings[i + 1];
-    float delta_time = static_cast<std::chrono::duration<float>>(stop.timestamp - start.timestamp).count();
+    float delta_time = static_cast<std::chrono::duration<float>>(stop->timestamp - start->timestamp).count();
 
-    if (start.energies.size() != stop.energies.size())
+    if (start->energies.size() != stop->energies.size())
     {
       std::cout << "Readings are off" << std::endl;
       return;
     }
     last_calculated_time += delta_time;
-    for (auto domain : start.energies)
+    for (auto domain : start->energies)
     {
       /**
        * If the energy counter had reset, we have to add the max energy
        */
-      // std::cout << (long long)stop.energies[domain.first] - (long long)domain.second << std::endl;
-      if ((long long)stop.energies[domain.first] - (long long)domain.second < 0)
+      // std::cout << (long long)stop->energies[domain.first] - (long long)domain.second << std::endl;
+      if ((long long)stop->energies[domain.first] - (long long)domain.second < 0)
       {
 #ifdef __linux__
-        if (RAPL_device.max_energy_devices.count(domain.first))
+        if (RAPL_device->max_energy_devices.count(domain.first))
         {
-          std::ifstream Filehandler(RAPL_device.max_energy_devices[domain.first]);
+          std::ifstream Filehandler(RAPL_device->max_energy_devices[domain.first]);
           std::string energy_s;
           getline(Filehandler, energy_s);
           long long energy = std::stoll(energy_s);
 
-          last_calculated_energies[domain.first] += stop.energies[domain.first] - domain.second + energy;
+          last_calculated_energies[domain.first] += stop->energies[domain.first] - domain.second + energy;
         }
 #endif
       }
       else
       {
-        last_calculated_energies[domain.first] += (stop.energies[domain.first] - domain.second);
+        last_calculated_energies[domain.first] += (stop->energies[domain.first] - domain.second);
       }
     }
   }
