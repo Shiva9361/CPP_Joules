@@ -29,3 +29,45 @@ $(document).ready(function() {
 
 
 });
+
+
+function copyCode() {
+    const codeElement = document.getElementById("codeToCopy");
+    const codeText = codeElement.innerText;
+    
+    navigator.clipboard.writeText(codeText).then(() => {
+        alert("Code copied to clipboard!");
+    }).catch(err => {
+        console.error("Failed to copy: ", err);
+    });
+}
+document.getElementById("downloadLinksh").addEventListener("click", function(event) {
+    event.preventDefault();
+    const url = this.href;
+    const fileName = "installer.sh";
+
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+      })
+      .catch(console.error);
+  });
+document.getElementById("downloadLinkbat").addEventListener("click", function(event) {
+    event.preventDefault();
+    const url = this.href;
+    const fileName = "installer.bat";
+
+    fetch(url)
+    .then(response => response.blob())
+    .then(blob => {
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+    })
+    .catch(console.error);
+});

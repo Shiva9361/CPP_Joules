@@ -42,7 +42,19 @@
 .copy-button:hover {
   color: #fff;
 }
+.output-container {
+  position: relative;
+  background: #e0e0e0; /* Slightly darker gray for output */
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px;
+}
 
+.output {
+  font-family: monospace;
+  font-size: 16px;
+  color: #000; /* Black text for output */
+}
 
 
 .simple-link {
