@@ -1127,6 +1127,12 @@ select {
   padding-left: 0;
 }
 
+.doc-sub-sub-menu {
+  list-style: none;
+  padding-left: 34px;
+}
+
+
 .doc-sub-menu .nav-link {
   margin-bottom: 10px;
   font-size: 12px;

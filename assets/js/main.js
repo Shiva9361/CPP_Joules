@@ -30,13 +30,26 @@ $(document).ready(function() {
 
 });
 
-
-function copyCode() {
-    const codeElement = document.getElementById("codeToCopy");
-    const codeText = codeElement.innerText;
+function copyCode(id) {
+    const codeElement = document.getElementById(id);
     
+    if (!codeElement) {
+        console.error("Element with id " + id + " not found.");
+        return;
+    }
+
+    let codeText = codeElement.innerText.replace(/\u00A0/g, ' '); // Replace &nbsp; with space
+
     navigator.clipboard.writeText(codeText).then(() => {
-        alert("Code copied to clipboard!");
+        const copyButton = codeElement.nextElementSibling; // Assuming the button is the next sibling
+        
+        // Change the icon/text to indicate it was copied
+        copyButton.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        
+        // Reset the button back to original after 2 seconds
+        setTimeout(() => {
+            copyButton.innerHTML = '<i class="far fa-clipboard"></i> Copy code';
+        }, 2000);
     }).catch(err => {
         console.error("Failed to copy: ", err);
     });
