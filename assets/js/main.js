@@ -54,6 +54,21 @@ function copyCode(id) {
         console.error("Failed to copy: ", err);
     });
 }
+document.getElementById("downloadLinkPg").addEventListener("click", function(event) {
+    event.preventDefault();
+    const url = this.href;
+    const fileName = "PowerGadget_3.6.msi";
+
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+      })
+      .catch(console.error);
+  });
 document.getElementById("downloadLinksh").addEventListener("click", function(event) {
     event.preventDefault();
     const url = this.href;

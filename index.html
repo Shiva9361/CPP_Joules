@@ -107,12 +107,12 @@
                                                 series, featuring the Sandy Bridge or newer architecture.</li>
                                             <li>Linux distribution Debian based operating system. We have tested on
                                                 Ubuntu 20.04.6 LTS</li>
-                                            <li>The g++ compiler version has to be above v11.0.0. Install from <a
-                                                    class="simple-link"
-                                                    href="https://sourceforge.net/projects/mingw-w64/"
-                                                    target="_blank">here</a></li>
-                                            <li>If on Windows, then PowerGadget v3.6 has to installed.
-                                                </p>
+                                            <li>The g++ compiler version has to be above v11.0.0. Install from 
+                                                <a class="simple-link" href="https://sourceforge.net/projects/mingw-w64/" target="_blank">
+                                                    here</a>
+                                                </li>
+                                            <li>If on Windows, then PowerGadget v3.6 has to installed. Click <a id="downloadLinkPg" href="https://raw.githubusercontent.com/Shiva9361/CPP_Joules/main/PowerGadget_3.6.msi" target="_blank" class="simple-link">here</a> to install
+                                        </p>
                                     </div>
 
                                     <!-- Github -->
@@ -190,10 +190,21 @@
                                                 </button>
                                             </div>
                                         </li>
-                                        <p>If the version is less than v11.0 then install the newer version of g++ from <a class="simple-link" href="https://sourceforge.net/projects/mingw-w64/" target="_blank">here</a></p>
+                                        <p>If the version is less than v11.0 then run the below code : </p>
+                                            <div class="code-container">
+                                                <div class="code" id="codeToCopy5">
+                                                    sudo apt update<br>
+                                                    sudo apt install g++-13<br>
+                                                    sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 60 <br>
+                                                    sudo update-alternatives --config g++
+                                                </div>
+                                                <button class="copy-button" onclick="copyCode('codeToCopy5')">
+                                                    <i class="far fa-clipboard"></i> Copy code
+                                                </button>
+                                            </div>
                                         <li>Now create a test.cpp file and copy the below test code : </li>
                                         <div class="code-container">
-                                            <div class="code" id="codeToCopy5">
+                                            <div class="code" id="codeToCopy6">
                                                 <span style="color:rgb(89,138,67);">//test.cpp</span><br>
                                                 <span style="color:rgb(255, 124, 248);">#include</span><span
                                                     style="color:rgb(255, 155, 118);">&lt;cppjoules&gt;</span><br>
@@ -229,17 +240,17 @@
                                                     style="color:rgb(219, 255, 141);">0</span>;<br>
                                                 }
                                             </div>
-                                            <button class="copy-button" onclick="copyCode('codeToCopy5')">
+                                            <button class="copy-button" onclick="copyCode('codeToCopy6')">
                                                 <i class="far fa-clipboard"></i> Copy code
                                             </button>
                                         </div>
                                         <li>
                                             Now compile the code with this code : 
                                             <div class="code-container">
-                                                <div class="code" id="codeToCopy6">
+                                                <div class="code" id="codeToCopy7">
                                                     g++ test.cpp -lCPP_Joules
                                                 </div>
-                                                <button class="copy-button" onclick="copyCode('codeToCopy6')">
+                                                <button class="copy-button" onclick="copyCode('codeToCopy7')">
                                                     <i class="far fa-clipboard"></i> Copy code
                                                 </button>
                                             </div>
@@ -247,10 +258,10 @@
                                         <li>
                                             And run it 
                                             <div class="code-container">
-                                                <div class="code" id="codeToCopy7">
+                                                <div class="code" id="codeToCopy8">
                                                     ./a.exe
                                                 </div>
-                                                <button class="copy-button" onclick="copyCode('codeToCopy7')">
+                                                <button class="copy-button" onclick="copyCode('codeToCopy8')">
                                                     <i class="far fa-clipboard"></i> Copy code
                                                 </button>
                                             </div>
@@ -287,7 +298,7 @@
                                             <li>Now you can directly use the header in your cpp file</li>
                                         </ul>
                                         <div class="code-container">
-                                            <div class="code" id="codeToCopy8">
+                                            <div class="code" id="codeToCopy9">
                                                 <span style="color:rgb(89,138,67);">//test.cpp</span><br>
                                                 <span style="color:rgb(255, 124, 248);">#include</span><span
                                                     style="color:rgb(255, 155, 118);">"cppJoules/include/cppJoules.h"</span><br>
@@ -323,7 +334,7 @@
                                                     style="color:rgb(219, 255, 141);">0</span>;<br>
                                                 }
                                             </div>
-                                            <button class="copy-button" onclick="copyCode('codeToCopy8')">
+                                            <button class="copy-button" onclick="copyCode('codeToCopy9')">
                                                 <i class="far fa-clipboard"></i> Copy code
                                             </button>
                                         </div>
@@ -331,20 +342,20 @@
 
                                         <li>Now compile the file with this command :
                                             <div class="code-container">
-                                                <div class="code" id="codeToCopy9">
+                                                <div class="code" id="codeToCopy10">
                                                     g++ test.cpp -lCPP_Joules -L./cppJoules
                                                 </div>
-                                                <button class="copy-button" onclick="copyCode('codeToCopy9')">
+                                                <button class="copy-button" onclick="copyCode('codeToCopy10')">
                                                     <i class="far fa-clipboard"></i> Copy code
                                                 </button>
                                             </div>
                                         </li>
                                         <li>Then run the executable :
                                             <div class="code-container">
-                                                <div class="code" id="codeToCopy10">
+                                                <div class="code" id="codeToCopy11">
                                                     ./a.exe
                                                 </div>
-                                                <button class="copy-button" onclick="copyCode('codeToCopy10')">
+                                                <button class="copy-button" onclick="copyCode('codeToCopy11')">
                                                     <i class="far fa-clipboard"></i> Copy code
                                                 </button>
                                             </div>
@@ -363,10 +374,8 @@
                                                 from <a class="simple-link"
                                                     href="https://sourceforge.net/projects/mingw-w64/"
                                                     target="_blank">here</a><br>
-                                                <u>Note</u> : If PowerGadget v3.6 is not present, then install from <a
-                                                    class="simple-link"
-                                                    href="https://sourceforge.net/projects/mingw-w64/"
-                                                    target="_blank">here</a>
+                                                <u>Note</u> : If PowerGadget v3.6 is not present, then install from 
+                                                <a id="downloadLinkPg" href="https://raw.githubusercontent.com/Shiva9361/CPP_Joules/main/PowerGadget_3.6.msi" target="_blank" class="simple-link">here</a>
                                             </p>
                                         </li>
                                     </ol>
