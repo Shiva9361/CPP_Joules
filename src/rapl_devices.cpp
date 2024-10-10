@@ -68,7 +68,11 @@ RAPLDevice::RAPLDevice()
  */
 #ifdef _WIN64
   initialized = false;
-  const char *path = "..\\dependencies\\EnergyLib64.dll";
+  char tpath[MAX_PATH];
+  GetSystemDirectoryA(tpath, MAX_PATH);
+  // Directly building might not work, the string might be lost before applying .c_str
+  std::string fullpath = std::string(tpath) + std::string("\\EnergyLib64.dll");
+  const char *path = fullpath.c_str();
   handler = LoadLibrary(path);
   if (!handler)
   {
