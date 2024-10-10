@@ -1,6 +1,6 @@
 #include <vector>
 #include <iostream>
-#include "../include/cppJoules.h"
+#include <cppJoules.h>
 
 int main()
 {

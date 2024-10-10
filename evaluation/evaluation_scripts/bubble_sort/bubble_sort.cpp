@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iterator>
 #include <vector>
-#include "../include/cppJoules.h"
+#include <cppJoules.h>
 
 template <typename RandomAccessIterator>
 void bubble_sort(RandomAccessIterator begin, RandomAccessIterator end) {

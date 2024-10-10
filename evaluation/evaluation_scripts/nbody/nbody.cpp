@@ -5,7 +5,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "../include/cppJoules.h"
+#include <cppJoules.h>
 class Vector {
 private:
     double px, py, pz;

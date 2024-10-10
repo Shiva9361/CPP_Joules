@@ -1,7 +1,7 @@
 #include <iterator>
 #include <algorithm> // for std::inplace_merge
 #include <functional> // for std::less
-#include "../include/cppJoules.h"
+#include <cppJoules.h>
 template<typename RandomAccessIterator, typename Order>
  void mergesort(RandomAccessIterator first, RandomAccessIterator last, Order order)
 {
