@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>CPPJoules: An Energy Measurement Tool for CPP</title>
     <!-- Meta -->
@@ -14,15 +15,15 @@
     <!-- FontAwesome JS -->
     <script defer src="assets/fontawesome/js/all.js"></script>
     <!-- Global CSS -->
-    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
-    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
     <link rel="stylesheet" href="assets/plugins/prism/prism.css">
-    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">  
-      
+    <link rel="stylesheet" href="assets/plugins/elegant_font/css/style.css">
+
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
-    
-</head> 
+
+</head>
 
 <body class="body-green">
     <div class="page-wrapper">
@@ -36,16 +37,17 @@
                             <span class="text-highlight"></span><span class="text-bold">CPPJoules</span>
                         </a>
                     </h1>
-                    
+
                 </div>
-                
+
                 <div class="top-search-box">
-	                 <form class="form-inline search-form justify-content-center" action="" method="get">
-			            <input type="text" placeholder="Search..." name="search" class="form-control search-input">
-			            <button type="submit" class="btn search-btn" value="Search"><i class="fas fa-search"></i></button>
-			        </form>
+                    <form class="form-inline search-form justify-content-center" action="" method="get">
+                        <input type="text" placeholder="Search..." name="search" class="form-control search-input">
+                        <button type="submit" class="btn search-btn" value="Search"><i
+                                class="fas fa-search"></i></button>
+                    </form>
                 </div>
-                
+
             </div><!--//container-->
         </header>
 
@@ -106,7 +108,8 @@
                                     <div class="code-block">
                                         <p>Our entire codebase is in this Github repo : <span class="highlight">https://github.com/rishalab/CPPJoules.git</span>, you can either clone or download it to check it.</p>
                                         <div class="code-container">
-                                            <div class="code" id="codeToCopy">git clone https://github.com/rishalab/CPPJoules.git</div>
+                                            <div class="code" id="codeToCopy">git clone
+                                                https://github.com/rishalab/CPPJoules.git</div>
                                             <button class="copy-button" onclick="copyCode()">
                                                 <i class="far fa-clipboard"></i> Copy code
                                             </button>
@@ -136,7 +139,8 @@
                                         <li>The library will be installed in /usr/bin</li>
                                         <li>You have to give read 'r' access to the rapl first ,run this code :                      
                                             <div class="code-container">
-                                                <div class="code" id="codeToCopy">sudo chmod +r -R /sys/class/powercap/</div>
+                                                <div class="code" id="codeToCopy">sudo chmod +r -R /sys/class/powercap/
+                                                </div>
                                                 <button class="copy-button" onclick="copyCode()">
                                                     <i class="far fa-clipboard"></i> Copy code
                                                 </button>
@@ -155,10 +159,14 @@
                                             <!-- <p>if it still doesn't work ,try this permissions : </p>
                                             <div class="code-container">
                                                 <div class="code" id="codeToCopy">
-                                                    sudo chmod +r /sys/class/powercap/intel-rapl/intel-rapl:0/energy_uj<br>
-                                                    sudo chmod +r /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:0/energy_uj<br>
-                                                    sudo chmod +r /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:1/energy_uj<br>
-                                                    sudo chmod +r /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:2/energy_uj<br>
+                                                    sudo chmod +r
+                                                    /sys/class/powercap/intel-rapl/intel-rapl:0/energy_uj<br>
+                                                    sudo chmod +r
+                                                    /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:0/energy_uj<br>
+                                                    sudo chmod +r
+                                                    /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:1/energy_uj<br>
+                                                    sudo chmod +r
+                                                    /sys/class/powercap/intel-rapl/intel-rapl:0/intel-rapl:0:2/energy_uj<br>
                                                 </div>
                                                 <button class="copy-button" onclick="copyCode()">
                                                     <i class="far fa-clipboard"></i> Copy code
@@ -242,7 +250,7 @@
                                                 <button class="copy-button" onclick="copyCode()">
                                                     <i class="far fa-clipboard"></i> Copy code
                                                 </button>
-                                            </div>  
+                                            </div>
                                         </li>
                                         <li>Then run the executable :
                                             <div class="code-container">
@@ -252,7 +260,7 @@
                                                 <button class="copy-button" onclick="copyCode()">
                                                     <i class="far fa-clipboard"></i> Copy code
                                                 </button>
-                                            </div>  
+                                            </div>
                                         </li>
                                         <li>The output 
                                             <div class="output-container">
@@ -413,6 +421,7 @@
                                 <h3 class="promo-title">Contributors</h3>
                                 <!-- <p> Rajrupa chattaraj, Sridhar Chimalakonda</p> -->
                                 <p>Person 1, Person 2, Person 3</p>
+                                <p>Person 1, Person 2, Person 3</p>
                                 <!-- <a class="btn btn-cta" href="" target="_blank"><i class="fas fa-external-link-alt"></i> Preprint</a> -->
                             </div>
                         </div>
@@ -425,9 +434,9 @@
     <!-- Main Javascript -->          
     <script type="text/javascript" src="assets/plugins/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>    
-    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>      
-    <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>                                                             
+    <script type="text/javascript" src="assets/plugins/prism/prism.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/stickyfill/dist/stickyfill.min.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 </html> 
